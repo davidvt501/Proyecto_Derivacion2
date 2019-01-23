@@ -231,7 +231,7 @@ console.log('xd');
 
 <p>Borrar Programa</p>
 <ul>
-<form name="programa_b" action="../masterkey/remove_prog.php" method="POST">
+<form name="programa_b" action="../masterkey/program/programRemoved.php" method="POST">
 	<?php
 	$host        = "host = localhost";
 	$port        = "port = 5432";

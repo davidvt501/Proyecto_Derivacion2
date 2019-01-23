@@ -36,7 +36,7 @@ margin: 2px 0;
 		<form name="hola" action="../functionaries/program_carrer_distinction.php" method="post">
 		<img src="../assets/images/boss_carrer.png" alt="carrera" height="190" width="190">
 		<p>Seleccione una carrera</p>
-		<select id="soflow-color" name="cod">
+		<select id="soflow-color" name="cod" required>
 			<?php
 				while($mostrar=pg_fetch_assoc($result)){
 					echo '<option name="cod" value="'.$mostrar['code'].'">'.$mostrar['name'].'</option>';
@@ -64,6 +64,40 @@ margin: 2px 0;
 			
 			?>
 		</select>
+		<input type="submit">
+		</form>
+		</div>
+	</div>
+	
+	<div class="card card-3>
+		<form method="post">
+		</form>
+		<div>
+		<form name="hola" action="../functionaries/change_password.php" method="post">
+		<br>
+		<img src="../assets/images/key.png" alt="carrera" height="190" width="190">
+		<p>Cambiar contraseña</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		<input type="submit">
 		</form>
 		</div>

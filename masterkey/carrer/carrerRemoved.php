@@ -13,8 +13,20 @@ $delete_carrer="UPDATE carrer SET active=false WHERE cod_carrer='$cod'";
 
 $exe=pg_query($db,$delete_carrer);
 
+$name_con=pg_query($db,"SELECT * FROM carrer WHERE cod_carrer='$cod'");
+
+$name=pg_fetch_assoc($name_con);
+
 $delete_permits="DELETE FROM permits_f WHERE code='$cod'";
 
 $exe2=pg_query($db,$delete_permits);
 
 ?>
+<html>
+<head>
+<head>
+
+<body>
+<p> La carrera <?php echo $name['name']?> ha sido removida con sus permisos respectivos </p>
+</body>
+</html>

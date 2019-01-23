@@ -196,7 +196,7 @@ console.log('xd');
 
 <p>Borrar Carrera</p>
 <ul>
-<form name="carrera_b" action="../masterkey/remove_carrer.php" method="POST">
+<form name="carrera_b" action="../masterkey/carrer/carrerRemoved.php" method="POST">
 	<?php
 	/* $host        = "host = localhost";
 	$port        = "port = 5432";

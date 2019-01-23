@@ -15,7 +15,6 @@ $_SESSION["run"]=$run;
 </head>
 
 <body>
-<p><?php echo $run?></p>
 <form action="password_verification.php" method="post">
 Ingrese su contraseña actual <br>
 <input type="text" name="pass"> <br>
@@ -23,5 +22,6 @@ Ingrese su nueva contraseña <br>
 <input type="text" name="new_pass"> <br>
 <input type="submit" value="Enviar">
 </form>
+<a href="">
 </body>
 </html>

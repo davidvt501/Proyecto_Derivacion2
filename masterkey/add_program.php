@@ -16,11 +16,12 @@ $execute=pg_query($db,$consulta_programa);
 $rows=pg_num_rows($execute);
 
 if ($rows>0){
-	echo 'No';
+	header('Location: http://localhost/Proyecto_Derivacion/masterkey/program/exsistingProgram.php');
 }else{
 $nuevo_prog="INSERT INTO program values('$cod','$name',true)";
 
 $exe=pg_query($db,$nuevo_prog);
-echo 'Si';
+header('Location: http://localhost/Proyecto_Derivacion/masterkey/program/success.php');
+
 }
  ?>

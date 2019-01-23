@@ -22,6 +22,6 @@ Ingrese su nueva contraseña <br>
 <input type="text" name="new_pass"> <br>
 <input type="submit" value="Enviar">
 </form>
-<a href="">
+<a href="http://localhost/Proyecto_Derivacion/functionaries/functionary_selection.php">Regresar</a>
 </body>
 </html>

@@ -1,0 +1,47 @@
+Funcionario:
+RUT (Pk)
+Nombre
+Permiso
+Contraseña
+0 - Recesivo
+1 - Jefe_Carrera
+2 - Encargado de Programa
+3 - Jefe_Carrera & Encargado de Programa
+Carrera (Puede ser NULL)(Fk)
+Programa (Puede ser NULL) (Fk)
+
+Permisos_F:
+RUT (Fk)
+Cod_Carrera(Fk)
+
+Carrera:
+Nombre_Carrera
+Cod_Carrera (Pk)
+
+Estudiante:
+RUN (Pk)
+Nombre
+Cod_Carrera (Fk)
+Correo
+Nivel
+Telefono
+PACE
+
+Derivacion:
+Cod_Derivacion (Pk)
+Cod_Programa (Fk)
+RUN_Estudiante (Fk)
+RUN_Funcionario_Deriv (Fk)
+Fecha_Hora_Deriv
+Fecha_Hora_Prog
+Fecha_Hora_Realizada
+Estado (S/N)
+Tipo_Apoyo
+
+Programa:
+Cod_Programa (Pk)
+
+masterkey:
+RUT (Pk)
+Contraseña
+ 

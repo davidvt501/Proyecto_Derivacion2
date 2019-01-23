@@ -1,0 +1,20 @@
+<?php
+$host        = "host = localhost";
+$port        = "port = 5432";
+$dbname      = "dbname = db_derv";
+$credentials = "user = postgres password=1234";
+$db = pg_connect( "$host $port $dbname $credentials"  );
+session_start();
+$run_student=$_SESSION["run"];
+$cod_program=$_SESSION["cod"];
+$run_functionary=$_SESSION["run_f"];
+$comment=$_SESSION["comment"];
+$criteriosArray=$_SESSION["criteriosArray"];
+$priority=$_SESSION["priority"];
+
+$criteriosEncodeados=json_encode($criteriosArray);
+
+$derivar=pg_query($db,"INSERT INTO derivation (cod_program,run_student,run_functionary,priority,criteria,derivation_status)values(202,'$run_student','$run_functionary','$priority','$criteriosEncodeados',0)");
+
+echo $derivar;
+?>

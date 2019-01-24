@@ -77,44 +77,47 @@ $exe=pg_query($db,$consultaderivaciones);
 		  
 		  ?></td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Revisar</button>'?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Programar</button>'?></td>
         </tr>
 		<!-- Modal -->
   <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
     <?php echo '<div class="modal-dialog">'?>
     
       <!-- Modal content-->
-      <?php echo '<div class="modal-content">'?>
-        <?php echo '<div class="modal-header">'?>
-          <?php echo '<button type="button" class="close" data-dismiss="modal">&times;</button> '?>
-          <?php echo '<h4 class="modal-title">Derivacion N°:'.$mostrar['cod_derivation'].'</h4>'?>
-        <?php echo '</div>' ?>
-        <?php echo '<div class="modal-body">'?>
-		<?php echo'<p>Alumno derivado: '.$mostrar['student_name'].''?>
-          <?php echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].''?>
-		  <?php echo'<p>Funcionario que Deriva: '.$mostrarName['name'].''?>
-		  <?php echo'<p>Prioridad: '.$mostrar['priority'].''?>
-		  <?php echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].''?>
-		  <?php $criteria = $mostrar['criteria'];
-		  $criteria_lista=json_decode($criteria);
-		  echo "<p>Criterios considerados:</p>";
+      <?php echo '<div class="modal-content">';
+        echo '<div class="modal-header">';
+        echo '<button type="button" class="close" data-dismiss="modal">&times;</button> ';
+        echo '<h4 class="modal-title">Derivacion N°:'.$mostrar['cod_derivation'].'</h4>';
+        echo '</div>';
+        echo '<div class="modal-body">';
+		echo '<form action="schedule_derivation.php" method="post">';
+		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
+        echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
+		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
+		echo'<p>Prioridad: '.$mostrar['priority'].'';
+		echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].'';
+		$criteria = $mostrar['criteria'];
+		$criteria_lista=json_decode($criteria);
+		echo "<p>Criterios considerados:</p>";
 		  for($i=0; $i < count($criteria_lista); $i++){
 			  echo "<ul>";
 			  echo " <li>$criteria_lista[$i]</li>";
 			  echo "</ul>";
 }
- ?>
-        <?php echo'</div>'?>
-        <?php echo'<div class="modal-footer">'?>
-          <?php echo'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'?>
-        <?php echo'</div>'?>
-      <?php echo'</div>'?>
+		echo '<input id="date" type="date">';
+		echo '<input id="time" type="time">';
+		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
+		echo'</div>';
+        echo'<div class="modal-footer">';
+		echo'<button type="submit" class="btn btn-default">Enviar</button>';
+		echo'</form>';
+        echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>';
+        echo'</div>';
+		echo'</div>';
       
-    <?php echo'</div>'?>
-  <?php echo '</div>'?>
-	
-		
-        <?php } ?>
+    echo'</div>';
+  echo '</div>';
+  } ?>
       </tbody>
     </table>
     <script>

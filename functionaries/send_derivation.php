@@ -24,12 +24,10 @@ if (isset($_POST["academica"]) || isset($_POST["socioEmocional"])) {
   $run_f=$_SESSION["run_f"];
   $comment=$_POST['comment'];
   $run=$_POST['run'];
-  $slider=$_POST['sliderv'];
   $_SESSION["cod"]=$cod;
   $_SESSION["run_f"]=$run_f;
   $_SESSION["comment"]=$comment;
   $_SESSION["run"]=$run;
-  $_SESSION["slider"]=$slider;
 
   $criteriosArray=[];
   if (isset($_POST["academica"]) && (!isset($_POST["socioEmocional"]))){

@@ -14,7 +14,7 @@ $priority=$_SESSION["priority"];
 $date = date('Y/m/d h:i:s', time());
 $criteriosEncodeados=json_encode($criteriosArray);
 
-$derivar=pg_query($db,"INSERT INTO derivation (cod_program,run_student,run_functionary,priority,criteria,derivation_status,datetime_derivated)values(204,'$run_student','$run_functionary','$priority','$criteriosEncodeados',0,'$date')");
+$derivar=pg_query($db,"INSERT INTO derivation (cod_program,run_student,run_functionary,criteria,derivation_status,datetime_derivated)values(204,'$run_student','$run_functionary','$criteriosEncodeados',0,'$date')");
 
 echo $derivar;
 ?>

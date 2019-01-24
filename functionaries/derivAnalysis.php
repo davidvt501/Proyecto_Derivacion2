@@ -12,7 +12,6 @@ $cod=$_SESSION["cod"];
 $run_f=$_SESSION["run_f"];
 $comment=$_SESSION["comment"];
 $run=$_SESSION["run"];
-$slider=$_SESSION["slider"];
 
 //Consultas Nombres
 $consulta_nombre_funcionario=pg_query($db,"SELECT * FROM functionary where run='$run_f'");
@@ -45,17 +44,6 @@ $_SESSION["criteriosArray"]=$criteriosArray;
  ?>
 </ul>
  <p> Comentario: <?php echo $comment ?> </p>
- <?php
-  if ($slider==1){
-    $slider='Baja';
-  }else if($slider==2){
-    $slider='Media';
-  }else if($slider==3){
-    $slider='Alta';
-  }
-  $_SESSION["priority"]=$slider;
- ?>
- <p>Prioridad: <?php echo $slider; ?></p>
 <form action="../functionaries/carrer_boss_interface.php">
   <button type="submit">Regresar</button>
   <button type="submit" formaction="../functionaries/make_derivation.php" method="post">Enviar Direccion</button>

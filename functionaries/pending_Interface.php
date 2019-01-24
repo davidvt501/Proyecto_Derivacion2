@@ -13,7 +13,7 @@ INNER JOIN student ON student.run = derivation.run_student
 INNER JOIN functionary ON derivation.run_functionary = functionary.run
 INNER JOIN carrer_student ON derivation.run_student = carrer_student.run
 WHERE derivation_status=0 AND derivation.cod_program='$cod_program'
-ORDER BY priority";
+ORDER BY datetime_derivated";
 
 $exe=pg_query($db,$consultaderivaciones);
 

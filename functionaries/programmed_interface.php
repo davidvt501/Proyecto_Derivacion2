@@ -6,14 +6,14 @@ $credentials = "user = postgres password=1234";
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
 $cod_program=$_SESSION["cod"];
-$consultaderivaciones="SELECT derivation.*,carrer_student.cod_carrer as cod_carrer, program.name as program_name,student.name as student_name,functionary.name as functionary_name 
-FROM derivation 
-INNER JOIN program ON derivation.cod_program=program.cod_program 
-INNER JOIN student ON student.run = derivation.run_student 
-INNER JOIN functionary ON derivation.run_functionary = functionary.run 
+$consultaderivaciones="SELECT derivation.*,carrer_student.cod_carrer as cod_carrer, program.name as program_name,student.name as student_name,functionary.name as functionary_name
+FROM derivation
+INNER JOIN program ON derivation.cod_program=program.cod_program
+INNER JOIN student ON student.run = derivation.run_student
+INNER JOIN functionary ON derivation.run_functionary = functionary.run
 INNER JOIN carrer_student ON derivation.run_student = carrer_student.run
-WHERE derivation_status=0 AND derivation.cod_program=$cod_program
-ORDER BY priority";
+WHERE derivation_status=1 AND derivation.cod_program=$cod_program
+ORDER BY datetime_programmed";
 
 $exe=pg_query($db,$consultaderivaciones);
 
@@ -33,7 +33,7 @@ $exe=pg_query($db,$consultaderivaciones);
 		font-size: 10px;
 		height:30px;
 		width:90px;
-	}		
+	}
 	</style>
 
 
@@ -58,7 +58,7 @@ $exe=pg_query($db,$consultaderivaciones);
 	  <div class="tbl-content">
 	  <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
-        <?php while($mostrar=pg_fetch_assoc($exe)){ 
+        <?php while($mostrar=pg_fetch_assoc($exe)){
           $conCarrerName=pg_query($db,"SELECT * FROM carrer WHERE cod_carrer='$mostrar[cod_carrer]'");
           $mostrarName=pg_fetch_assoc($conCarrerName);
           ?>
@@ -73,16 +73,15 @@ $exe=pg_query($db,$consultaderivaciones);
 }else{
 	echo $mostrar['datetime_programmed'];
 }
-		  echo $mostrar['datetime_programmed']
-		  
+
 		  ?></td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Programar</button>'?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Modificar</button>'?></td>
         </tr>
 		<!-- Modal -->
   <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
     <?php echo '<div class="modal-dialog">'?>
-    
+
       <!-- Modal content-->
       <?php echo '<div class="modal-content">';
         echo '<div class="modal-header">';
@@ -104,17 +103,15 @@ $exe=pg_query($db,$consultaderivaciones);
 			  echo " <li>$criteria_lista[$i]</li>";
 			  echo "</ul>";
 }
-		echo '<input id="date" type="date">';
-		echo '<input id="time" type="time">';
 		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
 		echo'</div>';
         echo'<div class="modal-footer">';
-		echo'<button type="submit" class="btn btn-default">Enviar</button>';
+		echo'<button type="submit" class="btn btn-default">Enviar Cambios</button>';
 		echo'</form>';
         echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>';
         echo'</div>';
 		echo'</div>';
-      
+
     echo'</div>';
   echo '</div>';
   } ?>
@@ -142,5 +139,7 @@ $exe=pg_query($db,$consultaderivaciones);
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="../assets/js/index.js"></script>
 </div>
+<a href="http://localhost/Proyecto_Derivacion/functionaries/progInterface_selection.php">Regresar</a>
+
   </body>
   </html>

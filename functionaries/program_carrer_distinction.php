@@ -22,6 +22,6 @@ if($type=='c'){
   header('Location: ../functionaries/carrer_boss_interface.php');
 }elseif($type=='p'){
   $_SESSION["cod"]=$_POST[cod];
-  header('Location: ../functionaries/program_interface.php');
+  header('Location: ../functionaries/derivation_selection.php');
 }
  ?>

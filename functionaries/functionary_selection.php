@@ -53,7 +53,7 @@ margin: 2px 0;
 		<form method="post">
 		</form>
 		<div>
-		<form name="hola" action="../functionaries/program_carrer_distinction.php" method="post">
+		<form name="hola" action="../functionaries/progInterface_selection.php" method="post">
 		<img src="../assets/images/program2.png" alt="carrera" height="190" width="190">
 		<p>Seleccione un programa</p>
 		<select id="soflow-color" name="cod" required>

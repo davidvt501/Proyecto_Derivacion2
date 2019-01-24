@@ -12,7 +12,7 @@ INNER JOIN program ON derivation.cod_program=program.cod_program
 INNER JOIN student ON student.run = derivation.run_student
 INNER JOIN functionary ON derivation.run_functionary = functionary.run
 INNER JOIN carrer_student ON derivation.run_student = carrer_student.run
-WHERE derivation_status=0 AND derivation.cod_program=$cod_program
+WHERE derivation_status=0 AND derivation.cod_program='$cod_program'
 ORDER BY priority";
 
 $exe=pg_query($db,$consultaderivaciones);
@@ -142,7 +142,10 @@ $exe=pg_query($db,$consultaderivaciones);
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="../assets/js/index.js"></script>
 </div>
-<a href="http://localhost/Proyecto_Derivacion/functionaries/progInterface_selection.php">Regresar</a>
+<form action="http://localhost/Proyecto_Derivacion/functionaries/progInterface_selection.php" method="post">
+<button type="submit">Regresar<button>
+<input type="hidden" value="<?php echo $cod_program ?>">
+</form>
 
   </body>
   </html>

@@ -84,11 +84,13 @@ $dif_com='Dificultades en la comunicación y expresión oral';
   Comentario <br>
   <textarea id="confirmationText" class="text" cols="70" rows ="5" name="comment" required></textarea> <br>
   Prioridad: <br>
-  <input type="range" min="1" max="3" value="2" name="sliderv" onchange="updateTextInput(this.value);">
+  <input type="range" min="1" max="3" value="2" name="sliderv" onchange="updateTextInput(this.value);" required>
   <input type="text" name="slider" id="sliderv" value="" disabled> <br>
   <input type="submit">
   </form>
-
+<form action="../functionaries/functionary_selection.php">
+  <button type="submit">Regresar</button>
+</form>
 
 
 

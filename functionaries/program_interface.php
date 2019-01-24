@@ -23,9 +23,20 @@ $exe=pg_query($db,$consultaderivaciones);
   <head>
   <meta charset="utf-8">
   <title>select</title>
-  <link rel="stylesheet" type="text/css" href="../assets/css/table_test.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/tablestyle.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/programbuttons.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<style>
+	.btn{
+		font-size: 10px;
+		height:30px;
+		width:90px;
+	}		
+	</style>
+
+
 
   </head>
   <body>
@@ -39,7 +50,7 @@ $exe=pg_query($db,$consultaderivaciones);
         <th>Prioridad</th>
         <th>Fecha de la Derivacion</th>
         <th>Fecha Programada</th>
-        <th>Revisar</th>
+        <th></th>
         </tr>
       </thead>
 	  </table>
@@ -52,8 +63,6 @@ $exe=pg_query($db,$consultaderivaciones);
           $mostrarName=pg_fetch_assoc($conCarrerName);
           ?>
         <tr>
-          <?php 
-          echo '<form action="derivation_analytic.php" method="post">' ?>
           <td><?php echo $mostrar['student_name']?></td>
           <td><?php echo $mostrar['functionary_name']?></td>
           <td><?php echo $mostrarName['name']?></td>
@@ -68,8 +77,43 @@ $exe=pg_query($db,$consultaderivaciones);
 		  
 		  ?></td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="submit">Revisar</button>'; echo '</form>' ?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Revisar</button>'?></td>
         </tr>
+		<!-- Modal -->
+  <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
+    <?php echo '<div class="modal-dialog">'?>
+    
+      <!-- Modal content-->
+      <?php echo '<div class="modal-content">'?>
+        <?php echo '<div class="modal-header">'?>
+          <?php echo '<button type="button" class="close" data-dismiss="modal">&times;</button> '?>
+          <?php echo '<h4 class="modal-title">Derivacion N°:'.$mostrar['cod_derivation'].'</h4>'?>
+        <?php echo '</div>' ?>
+        <?php echo '<div class="modal-body">'?>
+		<?php echo'<p>Alumno derivado: '.$mostrar['student_name'].''?>
+          <?php echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].''?>
+		  <?php echo'<p>Funcionario que Deriva: '.$mostrarName['name'].''?>
+		  <?php echo'<p>Prioridad: '.$mostrar['priority'].''?>
+		  <?php echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].''?>
+		  <?php $criteria = $mostrar['criteria'];
+		  $criteria_lista=json_decode($criteria);
+		  echo "<p>Criterios considerados:</p>";
+		  for($i=0; $i < count($criteria_lista); $i++){
+			  echo "<ul>";
+			  echo " <li>$criteria_lista[$i]</li>";
+			  echo "</ul>";
+}
+ ?>
+        <?php echo'</div>'?>
+        <?php echo'<div class="modal-footer">'?>
+          <?php echo'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'?>
+        <?php echo'</div>'?>
+      <?php echo'</div>'?>
+      
+    <?php echo'</div>'?>
+  <?php echo '</div>'?>
+	
+		
         <?php } ?>
       </tbody>
     </table>

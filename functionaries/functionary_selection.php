@@ -7,6 +7,8 @@ session_start();
 $run=$_SESSION["run"];
 $_SESSION["run"]=$run;	
 $db = pg_connect( "$host $port $dbname $credentials"  );
+
+
 $sql_carrer="SELECT * FROM permits_f where run='$run' AND permisson_state!=false AND permisson_type='c'";
 		$result=pg_query($db,$sql_carrer);
 $sql_program="SELECT * FROM permits_f where run='$run' AND permisson_state!=false AND permisson_type='p'";

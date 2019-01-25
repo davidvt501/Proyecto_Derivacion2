@@ -141,7 +141,7 @@ $exe=pg_query($db,$consultaderivaciones);
 </div>
 <form action="http://localhost/Proyecto_Derivacion/functionaries/progInterface_selection.php" method="post">
 <button type="submit">Regresar<button>
-<input type="hidden" value="<?php echo $cod_program ?>">
+<input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>
   </body>
   </html>

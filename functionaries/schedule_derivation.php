@@ -18,5 +18,14 @@ $cod=$_POST["cod"];
 $schedule=pg_query($db,"UPDATE derivation SET datetime_programmed='$datetime' WHERE cod_derivation='$cod'");
 
 $changeStatus=pg_query($db,"UPDATE derivation SET derivation_status=1 WHERE cod_derivation='$cod'");
-echo $cod;
+$_SESSION["cod"]=$cod;
 ?>
+<html>
+<head>
+</head>
+<body>
+<form action="http://localhost/Proyecto_Derivacion/functionaries/pending_Interface.php" method="post">
+<button type="submit">
+</form>
+</body>
+</html>

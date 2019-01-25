@@ -12,8 +12,8 @@ INNER JOIN program ON derivation.cod_program=program.cod_program
 INNER JOIN student ON student.run = derivation.run_student
 INNER JOIN functionary ON derivation.run_functionary = functionary.run
 INNER JOIN carrer_student ON derivation.run_student = carrer_student.run
-WHERE derivation_status=0 AND derivation.cod_program='$cod_program'
-ORDER BY datetime_derivated";
+WHERE derivation_status=2 AND derivation.cod_program='$cod_program'
+ORDER BY datetime_programmed";
 
 $exe=pg_query($db,$consultaderivaciones);
 
@@ -73,11 +73,10 @@ $exe=pg_query($db,$consultaderivaciones);
 }else{
 	echo $mostrar['datetime_programmed'];
 }
-		  echo $mostrar['datetime_programmed']
 
 		  ?></td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Programar</button>'?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Modificar</button>'?></td>
         </tr>
 		<!-- Modal -->
   <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
@@ -90,7 +89,7 @@ $exe=pg_query($db,$consultaderivaciones);
         echo '<h4 class="modal-title">Derivacion N°:'.$mostrar['cod_derivation'].'</h4>';
         echo '</div>';
         echo '<div class="modal-body">';
-		echo '<form action="schedule_derivation.php" method="post">';
+		echo '<form action="complete_derivation.php" method="post">';
 		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
         echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
 		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
@@ -104,12 +103,10 @@ $exe=pg_query($db,$consultaderivaciones);
 			  echo " <li>$criteria_lista[$i]</li>";
 			  echo "</ul>";
 }
-		echo '<input id="date" type="date" name="date" required>';
-		echo '<input id="time" type="time" name="time" required>';
 		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
 		echo'</div>';
         echo'<div class="modal-footer">';
-		echo'<button type="submit" class="btn btn-default">Enviar</button>';
+		echo'<button type="submit" class="btn btn-default">Enviar Cambios</button>';
 		echo'</form>';
         echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>';
         echo'</div>';
@@ -146,6 +143,5 @@ $exe=pg_query($db,$consultaderivaciones);
 <button type="submit">Regresar<button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>
-
   </body>
   </html>

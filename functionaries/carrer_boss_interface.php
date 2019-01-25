@@ -8,6 +8,7 @@ session_start();
 $cod=$_SESSION["cod"];
 $run_f=$_SESSION["run_f"];
 $_SESSION["run_f"]=$run_f;
+$_SESSION["cod"]=$cod;
 
 //criterios academicos
 
@@ -85,7 +86,8 @@ $dif_com='Dificultades en la comunicación y expresión oral';
   <textarea id="confirmationText" class="text" cols="70" rows ="5" name="comment" required></textarea> <br>
   <input type="submit">
   </form>
-<form action="../functionaries/functionary_selection.php">
+<form action="../functionaries/carrerInterface_selection.php" method="post">
+  <input type="hidden" value="<?php echo $cod; ?>" name="cod">
   <button type="submit">Regresar</button>
 </form>
 

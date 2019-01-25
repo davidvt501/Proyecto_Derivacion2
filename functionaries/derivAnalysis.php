@@ -44,8 +44,12 @@ $_SESSION["criteriosArray"]=$criteriosArray;
  ?>
 </ul>
  <p> Comentario: <?php echo $comment ?> </p>
-<form action="../functionaries/carrer_boss_interface.php">
+<form action="../functionaries/carrerInterface_selection.php" method="post">
+  <input type="hidden" value="<?php echo $cod; ?>" name="cod">
+  <input type="hidden" value="<?php echo $run_f; ?>" name="run_f">
   <button type="submit">Regresar</button>
+</form>
+  <form>
   <button type="submit" formaction="../functionaries/make_derivation.php" method="post">Enviar Direccion</button>
 </form>
 </body>

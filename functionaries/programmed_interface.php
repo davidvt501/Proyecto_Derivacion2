@@ -47,7 +47,6 @@ $exe=pg_query($db,$consultaderivaciones);
         <th>Nombre</th>
         <th>Funcionario que Deriva</th>
         <th>Carrera</th>
-        <th>Prioridad</th>
         <th>Fecha de la Derivacion</th>
         <th>Fecha Programada</th>
         <th></th>
@@ -66,7 +65,6 @@ $exe=pg_query($db,$consultaderivaciones);
           <td><?php echo $mostrar['student_name']?></td>
           <td><?php echo $mostrar['functionary_name']?></td>
           <td><?php echo $mostrarName['name']?></td>
-          <td><?php echo $mostrar['priority']?></td>
           <td><?php echo $mostrar['datetime_derivated']?></td>
           <td><?php if (empty($mostrar['datetime_programmed'])) {
     echo 'Pendiente';
@@ -106,6 +104,7 @@ $exe=pg_query($db,$consultaderivaciones);
 		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
 		echo'</div>';
         echo'<div class="modal-footer">';
+        echo '<input type="hidden" value="'.$cod_program.'" name="cod_program">';
 		echo'<button type="submit" class="btn btn-default">Enviar Cambios</button>';
 		echo'</form>';
         echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>';

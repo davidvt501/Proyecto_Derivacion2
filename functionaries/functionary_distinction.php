@@ -15,7 +15,7 @@ $credentials = "user = postgres password=1234";
 
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
-$_SESSION["run"]=$_POST['run'];
+$_SESSION["run_f"]=$_POST['run'];
 
 $result = pg_query($db,"SELECT * FROM functionary where run='$_POST[run]' AND pass='$_POST[pass]'");
 $rows = pg_num_rows($result);

@@ -92,7 +92,6 @@ $exe=pg_query($db,$consultaderivaciones);
 		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
         echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
 		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
-		echo'<p>Prioridad: '.$mostrar['priority'].'';
 		echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].'';
 		$criteria = $mostrar['criteria'];
 		$criteria_lista=json_decode($criteria);

@@ -47,10 +47,10 @@ $exe=pg_query($db,$consultaderivaciones);
         <th>Nombre</th>
         <th>Funcionario que Deriva</th>
         <th>Carrera</th>
-        <th>Prioridad</th>
         <th>Fecha de la Derivacion</th>
         <th>Fecha Programada</th>
-        <th></th>
+        <th>Fecha Terminada</th>
+        <th>...<th>
         </tr>
       </thead>
 	  </table>
@@ -66,7 +66,6 @@ $exe=pg_query($db,$consultaderivaciones);
           <td><?php echo $mostrar['student_name']?></td>
           <td><?php echo $mostrar['functionary_name']?></td>
           <td><?php echo $mostrarName['name']?></td>
-          <td><?php echo $mostrar['priority']?></td>
           <td><?php echo $mostrar['datetime_derivated']?></td>
           <td><?php if (empty($mostrar['datetime_programmed'])) {
     echo 'Pendiente';
@@ -75,8 +74,9 @@ $exe=pg_query($db,$consultaderivaciones);
 }
 
 		  ?></td>
+      <td><?php echo $mostrar['datetime_done'];?><td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Modificar</button>'?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Revisar</button>'?></td>
         </tr>
 		<!-- Modal -->
   <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
@@ -92,7 +92,6 @@ $exe=pg_query($db,$consultaderivaciones);
 		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
         echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
 		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
-		echo'<p>Prioridad: '.$mostrar['priority'].'';
 		echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].'';
 		$criteria = $mostrar['criteria'];
 		$criteria_lista=json_decode($criteria);

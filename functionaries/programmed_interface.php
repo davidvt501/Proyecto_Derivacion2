@@ -74,7 +74,7 @@ $exe=pg_query($db,$consultaderivaciones);
 
 		  ?></td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Modificar</button>'?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Cambiar Estado</button>'?></td>
         </tr>
 		<!-- Modal -->
   <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
@@ -91,7 +91,6 @@ $exe=pg_query($db,$consultaderivaciones);
 		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
         echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
 		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
-		echo'<p>Prioridad: '.$mostrar['priority'].'';
 		echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].'';
 		$criteria = $mostrar['criteria'];
 		$criteria_lista=json_decode($criteria);
@@ -105,7 +104,7 @@ $exe=pg_query($db,$consultaderivaciones);
 		echo'</div>';
         echo'<div class="modal-footer">';
         echo '<input type="hidden" value="'.$cod_program.'" name="cod_program">';
-		echo'<button type="submit" class="btn btn-default">Enviar Cambios</button>';
+		echo'<button type="submit" class="btn btn-default">Terminar</button>';
 		echo'</form>';
         echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>';
         echo'</div>';

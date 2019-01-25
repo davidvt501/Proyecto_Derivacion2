@@ -82,8 +82,10 @@ $dif_com='Dificultades en la comunicación y expresión oral';
     <input type="checkbox" name="socioEmocional[]" value="<?php echo $prob_voc; ?>"> <?php echo $prob_voc; ?> <br>
     <input type="checkbox" name="socioEmocional[]" value="<?php echo $dif_soc; ?>"> <?php echo $dif_soc; ?> <br>
     <input type="checkbox" name="socioEmocional[]" value="<?php echo $dif_com; ?>"> <?php echo $dif_com; ?> <br>
+    Correo: <input type="text" name="mail" value="" required> <br>
+    Telefono: <input type="text" name="phone" value="" required> <br>
   Comentario <br>
-  <textarea id="confirmationText" class="text" cols="70" rows ="5" name="comment" required></textarea> <br>
+  <textarea id="confirmationText" class="text" cols="70" rows ="5" name="comment" required placeholder="Comentarios y Observaciones con respecto al estudiante derivado."></textarea> <br>
   <input type="submit">
   </form>
 <form action="../functionaries/carrerInterface_selection.php" method="post">

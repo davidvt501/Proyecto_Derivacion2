@@ -16,6 +16,8 @@ WHERE cod_derivation='$cod'");
 
 $changeStatus=pg_query($db,"UPDATE derivation SET derivation_status=2 WHERE cod_derivation='$cod'");
 $_SESSION["cod"]=$cod_program;
+echo $complete;
+echo $changeStatus;
 ?>
 <html>
 <head>

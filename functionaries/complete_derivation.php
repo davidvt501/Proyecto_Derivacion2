@@ -8,6 +8,7 @@ session_start();
 
 $cod=$_POST["cod"];
 $cod_program=$_POST["cod_program"];
+date_default_timezone_set("America/Santiago");
 
 $date = date('Y/m/d h:i:s', time());
 
@@ -16,15 +17,14 @@ WHERE cod_derivation='$cod'");
 
 $changeStatus=pg_query($db,"UPDATE derivation SET derivation_status=2 WHERE cod_derivation='$cod'");
 $_SESSION["cod"]=$cod_program;
-echo $complete;
-echo $changeStatus;
+echo $_SESSION["cod"];
 ?>
 <html>
 <head>
 </head>
 <body>
-<form action="http://localhost/Proyecto_Derivacion/functionaries/pending_Interface.php" method="post">
-<button type="submit">
+<form action="http://localhost/Proyecto_Derivacion2/functionaries/programmed_Interface.php" method="post">
+<button type="submit">Regresar</button>
 </form>
 </body>
 </html>

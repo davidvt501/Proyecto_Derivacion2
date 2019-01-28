@@ -13,7 +13,7 @@ INNER JOIN student ON student.run = derivation.run_student
 INNER JOIN functionary ON derivation.run_functionary = functionary.run
 INNER JOIN carrer_student ON derivation.run_student = carrer_student.run
 WHERE derivation_status=2 AND derivation.cod_program='$cod_program'
-ORDER BY datetime_programmed";
+ORDER BY datetime_done DESC";
 
 $exe=pg_query($db,$consultaderivaciones);
 
@@ -91,8 +91,10 @@ $exe=pg_query($db,$consultaderivaciones);
         echo '<div class="modal-body">';
 		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
         echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
-		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
+		echo'<p>Carrera: '.$mostrarName['name'].'';
 		echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].'';
+    echo'<p>Fecha Programada: '.$mostrar['datetime_programmed'].'';
+    echo'<p>Fecha Finalizada: '.$mostrar['datetime_done'].'';
 		$criteria = $mostrar['criteria'];
 		$criteria_lista=json_decode($criteria);
 		echo "<p>Criterios considerados:</p>";
@@ -101,6 +103,8 @@ $exe=pg_query($db,$consultaderivaciones);
 			  echo " <li>$criteria_lista[$i]</li>";
 			  echo "</ul>";
 }
+    echo '<p>Comentario</p> <br>';
+    echo $mostrar['comment'];
 		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
 		echo'</div>';
         echo'<div class="modal-footer">';
@@ -135,8 +139,8 @@ $exe=pg_query($db,$consultaderivaciones);
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="../assets/js/index.js"></script>
 </div>
-<form action="http://localhost/Proyecto_Derivacion/functionaries/progInterface_selection.php" method="post">
-<button type="submit">Regresar<button>
+<form action="http://localhost/Proyecto_Derivacion2/functionaries/progInterface_selection.php" method="post">
+<button type="submit">Regresar</button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>
   </body>

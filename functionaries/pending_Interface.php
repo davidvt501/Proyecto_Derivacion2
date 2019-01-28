@@ -101,6 +101,7 @@ $exe=pg_query($db,$consultaderivaciones);
 			  echo " <li>$criteria_lista[$i]</li>";
 			  echo "</ul>";
 }
+    echo '<p>Comentario: '.$mostrar['comment'].' <br>';
 		echo '<input id="date" type="date" name="date" required>';
 		echo '<input id="time" type="time" name="time" required>';
 		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
@@ -140,8 +141,8 @@ $exe=pg_query($db,$consultaderivaciones);
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="../assets/js/index.js"></script>
 </div>
-<form action="http://localhost/Proyecto_Derivacion/functionaries/progInterface_selection.php" method="post">
-<button type="submit">Regresar<button>
+<form action="http://localhost/Proyecto_Derivacion2/functionaries/progInterface_selection.php" method="post">
+<button type="submit">Regresar</button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>
 

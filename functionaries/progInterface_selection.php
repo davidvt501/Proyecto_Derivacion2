@@ -21,7 +21,7 @@ $_SESSION["run"]=$run;
 <a href="../functionaries/programmed_Interface.php">Derivaciones Programadas</a>
 <a href="../functionaries/completed_Interface.php">Derivaciones Realizadas</a>
 <br>
-<form action="http://localhost/Proyecto_Derivacion/functionaries/functionary_selection.php" method="post">
+<form action="http://localhost/Proyecto_Derivacion2/functionaries/functionary_selection.php" method="post">
 <button type="submit">Regresar<button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>

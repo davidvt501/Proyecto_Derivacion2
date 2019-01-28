@@ -5,6 +5,7 @@ $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
+date_default_timezone_set("America/Santiago");
 
 $date=$_POST['date'];
 
@@ -25,7 +26,7 @@ $_SESSION["cod"]=$cod_program;
 <head>
 </head>
 <body>
-<form action="http://localhost/Proyecto_Derivacion/functionaries/pending_Interface.php" method="post">
+<form action="http://localhost/Proyecto_Derivacion2/functionaries/pending_Interface.php" method="post">
 <button type="submit">
 </form>
 </body>

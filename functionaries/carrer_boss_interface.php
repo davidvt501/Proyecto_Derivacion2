@@ -11,8 +11,9 @@ $_SESSION["run_f"]=$run_f;
 $_SESSION["cod"]=$cod;
 
 //criterios academicos
-
-$asignaturas='El/la est. presenta dificultades para comprender e integrar contenidos en más de una asignatura.';
+$criteriaAcad=pg_query($db,"SELECT * FROM criteria WHERE type='a'");
+$criteriaSocEm=pg_query($db,"SELECT * FROM criteria WHERE type='s'");
+/* $asignaturas='El/la est. presenta dificultades para comprender e integrar contenidos en más de una asignatura.';
 $asignatura='Presenta series dificultades en una asignatura y ésta representa una problematica para llegar a la titulación.';
 $vacios_p='Podría evidenciarse: problemáticas asociadas a organización del tiempo, ausencia de hábito, estrategias, métodos de estudio.';
 $reprobacion='Reprobación del ciclo básico.';
@@ -29,7 +30,7 @@ $desesperanza='Desesperanza';
 $desadaptacion='Desadaptacion';
 $prob_voc='Problemas Vocacionales';
 $dif_soc='Dificultades en las relaciones sociales';
-$dif_com='Dificultades en la comunicación y expresión oral';
+$dif_com='Dificultades en la comunicación y expresión oral'; */
 
 
  ?>
@@ -66,22 +67,15 @@ $dif_com='Dificultades en la comunicación y expresión oral';
 ?>
     </select><br>
     Criterios academicos:<br>
-    <input type="checkbox" name="academica[]" value="<?php echo $asignaturas; ?>"> <?php echo $asignaturas; ?> <br>
-    <input type="checkbox" name="academica[]" value="<?php echo $asignatura; ?>"> <?php echo $asignatura; ?> <br>
-    <input type="checkbox" name="academica[]" value="<?php echo $vacios_p; ?>"> <?php echo $vacios_p; ?> <br>
-    <input type="checkbox" name="academica[]" value="<?php echo $reprobacion; ?>"> <?php echo $reprobacion; ?> <br>
-    <input type="checkbox" name="academica[]" value="<?php echo $causal_eliminacion; ?>"> <?php echo $causal_eliminacion; ?> <br>
+    <?php while($mostrarCriteriaAcad=pg_fetch_assoc($criteriaAcad)){
+      echo '<input type="checkbox" name="academica[]" value="'.$mostrarCriteriaAcad['criteria_definition'].'">'.$mostrarCriteriaAcad['criteria_definition'].' <br>';
+    }
+?>
     Criterios socio-emocionales: <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $desmotivacion; ?>"> <?php echo $desmotivacion; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $frustracion; ?>"> <?php echo $frustracion; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $hipersensibilidad; ?>"> <?php echo $hipersensibilidad; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $ans_ang; ?>"> <?php echo $ans_ang; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $estres; ?>"> <?php echo $estres; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $desesperanza; ?>"> <?php echo $desesperanza; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $desadaptacion; ?>"> <?php echo $desadaptacion; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $prob_voc; ?>"> <?php echo $prob_voc; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $dif_soc; ?>"> <?php echo $dif_soc; ?> <br>
-    <input type="checkbox" name="socioEmocional[]" value="<?php echo $dif_com; ?>"> <?php echo $dif_com; ?> <br>
+    <?php while($mostrarCriteriaSocEm=pg_fetch_assoc($criteriaSocEm)){
+      echo '<input type="checkbox" name="academica[]" value="'.$mostrarCriteriaSocEm['criteria_definition'].'">'.$mostrarCriteriaSocEm['criteria_definition'].' <br>';
+    }
+    ?>
     Correo: <input type="text" name="mail" value="" required> <br>
     Telefono: <input type="text" name="phone" value="" required> <br>
   Comentario <br>

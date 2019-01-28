@@ -18,12 +18,11 @@ if($pass==$pass_db['pass']){
 	$cambio_pass=pg_query($db,"UPDATE functionary SET pass='$new_pass' WHERE run='$run'");
 	echo 'Contraseña Cambiada exitosamente';
 	echo '<br>';
-	echo '<a href="http://localhost/Proyecto_Derivacion/functionaries/functionary_selection.php">Regresar</a>';
+	echo '<a href="http://localhost/Proyecto_Derivacion2/functionaries/functionary_selection.php">Regresar</a>';
 }else{
 	echo 'Contraseña erronea, intentelo nuevamente.';
 	echo '<br>';
-	echo '<a href="http://localhost/Proyecto_Derivacion/functionaries/functionary_selection.php">Regresar</a>';
+	echo '<a href="http://localhost/Proyecto_Derivacion2/functionaries/functionary_selection.php">Regresar</a>';
 }
 
 ?>
-

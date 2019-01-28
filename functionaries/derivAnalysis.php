@@ -12,6 +12,7 @@ $cod=$_SESSION["cod"];
 $run_f=$_SESSION["run_f"];
 $comment=$_SESSION["comment"];
 $run=$_SESSION["run"];
+$prog=$_SESSION['prog'];
 
 //Consultas Nombres
 $consulta_nombre_funcionario=pg_query($db,"SELECT * FROM functionary where run='$run_f'");
@@ -25,6 +26,10 @@ $_SESSION["cod"]=$cod;
 $_SESSION["run_f"]=$run_f;
 $_SESSION["comment"]=$comment;
 $_SESSION["criteriosArray"]=$criteriosArray;
+$_SESSION['prog']=$prog;
+
+$datProg=pg_query($db,"SELECT * FROM program where cod_program='$prog'");
+$nomProg=pg_fetch_assoc($datProg);
 ?>
 <html>
 <head>
@@ -44,6 +49,7 @@ $_SESSION["criteriosArray"]=$criteriosArray;
  ?>
 </ul>
  <p> Comentario: <?php echo $comment ?> </p>
+ <p> Programa: <?php echo $nomProg['name']?> </p>
 <form action="../functionaries/carrerInterface_selection.php" method="post">
   <input type="hidden" value="<?php echo $cod; ?>" name="cod">
   <input type="hidden" value="<?php echo $run_f; ?>" name="run_f">

@@ -92,7 +92,7 @@ $sql="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
 						          while ($mostrar=pg_fetch_assoc($result2)){
 						            echo '<option name="cod_carrer" value="'.$mostrar['cod_carrer'].'">'.$mostrar['name'].'</option>';
 						          }
-											$sql3="SELECT * from program WHERE active!=false ORDER BY name";
+											$sql3="SELECT * from program WHERE active!=false AND type='a' ORDER BY name";
 											$result3=pg_query($db,$sql3);
 											while ($mostrar=pg_fetch_assoc($result3)){
 						            echo '<option name="cod_program" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';

@@ -27,13 +27,13 @@ if($rows>0){
 		$v_p=pg_query($db,"SELECT * FROM permits_f where run='$_POST[run]' AND code='$permits'");
 		$rows_p=pg_num_rows($v_p);
 		if ($rows_p>0){
-			header('Location: http://localhost/Proyecto_Derivacion/masterkey/permits/exsistingPermit.php');
+			header('Location: http://localhost/Proyecto_Derivacion2/masterkey/permits/exsistingPermit.php');
 		}else{
 			$mostrar=pg_fetch_assoc($result2);
 			$name=$mostrar['name'];
 			$type='p';
 			$r2=pg_query($db,"INSERT INTO permits_f VALUES ('$_POST[run]','$_POST[permits_c]','$name','$type',true)");
-			header('Location: http://localhost/Proyecto_Derivacion/masterkey/permits/success.php');
+			header('Location: http://localhost/Proyecto_Derivacion2/masterkey/permits/success.php');
 
 		}
 	}else{
@@ -43,13 +43,13 @@ if($rows>0){
 			$v_c=pg_query($db,"SELECT * FROM permits_f where run='$_POST[run]' AND code='$permits'");
 			$rows_c=pg_num_rows($v_c);
 			if($rows_c>0){
-				header('Location: http://localhost/Proyecto_Derivacion/masterkey/permits/exsistingPermit.php');
+				header('Location: http://localhost/Proyecto_Derivacion2/masterkey/permits/exsistingPermit.php');
 			}else{
 			$mostrar2=pg_fetch_assoc($result3);
 			$name=$mostrar2['name'];
 			$type='c';
 			$r3=pg_query($db,"INSERT INTO permits_f VALUES ('$_POST[run]','$_POST[permits_c]','$name','$type',true)");
-			header('Location: http://localhost/Proyecto_Derivacion/masterkey/permits/success.php');
+			header('Location: http://localhost/Proyecto_Derivacion2/masterkey/permits/success.php');
 
 		}
 		}else{

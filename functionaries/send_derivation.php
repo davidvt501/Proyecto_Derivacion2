@@ -56,7 +56,7 @@ if ($cons['cod_program']==301){ //Verifica si es PACE
 }else if ($cons['cod_program']>=302 && $cons['cod_program']<=305){ //Verifica si pertenece a alguno de los Programas
    $_SESSION['prog']=201;
 }else if($year-$consDat['income_year']<5){
-  $_SESSION['prog']=202;
+  $_SESSION['prog']=202; //Se deriva al AORA
 }else{
   echo 'No cumple los requisitos necesarios';
   echo '<a href="../functionaries/carrer_boss_interface.php">Regresar</a>';

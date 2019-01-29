@@ -17,11 +17,11 @@ $_SESSION["run"]=$run;
 
 
 <body>
-<a href="../functionaries/pending_Interface.php">Derivaciones Pendientes</a>
-<a href="../functionaries/programmed_Interface.php">Derivaciones Programadas</a>
-<a href="../functionaries/completed_Interface.php">Derivaciones Realizadas</a>
+<a href="pendingDerivations_Interface.php">Derivaciones Pendientes</a>
+<a href="programmedDerivations_Interface.php">Derivaciones Programadas</a>
+<a href="completedDerivations_Interface.php">Derivaciones Realizadas</a>
 <br>
-<form action="http://localhost/Proyecto_Derivacion2/functionaries/functionary_selection.php" method="post">
+<form action="../functionaryInterface_selection.php" method="post">
 <button type="submit">Regresar<button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>

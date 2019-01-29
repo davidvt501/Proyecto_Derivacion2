@@ -50,13 +50,13 @@ $nomProg=pg_fetch_assoc($datProg);
 </ul>
  <p> Comentario: <?php echo $comment ?> </p>
  <p> Programa: <?php echo $nomProg['name']?> </p>
-<form action="../functionaries/carrerInterface_selection.php" method="post">
+<form action="../carrerInterface_selection.php" method="post">
   <input type="hidden" value="<?php echo $cod; ?>" name="cod">
   <input type="hidden" value="<?php echo $run_f; ?>" name="run_f">
   <button type="submit">Regresar</button>
 </form>
   <form>
-  <button type="submit" formaction="../functionaries/make_derivation.php" method="post">Enviar Direccion</button>
+  <button type="submit" formaction="make_derivation.php" method="post">Enviar Direccion</button>
 </form>
 </body>
 </html>

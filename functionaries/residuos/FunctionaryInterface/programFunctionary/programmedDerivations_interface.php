@@ -23,7 +23,7 @@ $exe=pg_query($db,$consultaderivaciones);
   <head>
   <meta charset="utf-8">
   <title>select</title>
-  <link rel="stylesheet" type="text/css" href="../assets/css/tablestyle.css">
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/tablestyle.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -139,7 +139,7 @@ echo '<p>Comentario: '.$mostrar['comment'].' <br>';
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="../assets/js/index.js"></script>
 </div>
-<form action="http://localhost/Proyecto_Derivacion2/functionaries/progInterface_selection.php" method="post">
+<form action="progInterface_selection.php" method="post">
 <button type="submit">Regresar</button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>

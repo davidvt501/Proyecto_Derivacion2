@@ -67,18 +67,18 @@ if ($cons['cod_program']==301){ //Verifica si es PACE
   if (isset($_POST["academica"]) && (!isset($_POST["socioEmocional"]))){
     $criteriosArray = $_POST['academica'];
     $_SESSION["criteriosArray"]=$criteriosArray;
-    header('Location: ../functionaries/derivAnalysis.php');
+    header('Location: recap_derivation.php');
   }else if(isset($_POST["socioEmocional"]) && (!isset($_POST["academica"]))){
     $criteriosArray = $_POST['socioEmocional'];
     $_SESSION["criteriosArray"]=$criteriosArray;
-    header('Location: ../functionaries/derivAnalysis.php');
+    header('Location: recap_derivation.php');
   }else if (isset($_POST["academica"]) && isset($_POST["socioEmocional"])){
     $criteriosArray=array_merge($_POST["academica"],$_POST["socioEmocional"]);
     $_SESSION["criteriosArray"]=$criteriosArray;
-    header('Location: ../functionaries/derivAnalysis.php');
+    header('Location: recap_derivation.php');
   }
 }else{
-header('Location: ../functionaries/noCriteria.html');
+header('Location: noCriteria.html');
 }
 
 ?>

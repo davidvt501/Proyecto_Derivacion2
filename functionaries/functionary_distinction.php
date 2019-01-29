@@ -26,7 +26,7 @@ if ($rows!=0){
 	$result_e = pg_query($db,"SELECT functionality_state FROM functionary where run='$_POST[run]'");
 	$mostrar_e=pg_fetch_assoc($result_e);
 	if($mostrar_e['functionality_state']===t){
-		header('Location: ../functionaries/functionary_selection.php');
+		header('Location: ../functionaries/FunctionaryInterface/functionaryInterface_selection.php');
 	}else{
 		header('Location: ../functionaries/inexistent_functionary.php');
 	}

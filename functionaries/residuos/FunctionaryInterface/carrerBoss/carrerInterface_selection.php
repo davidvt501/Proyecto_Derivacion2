@@ -18,9 +18,9 @@ $_SESSION["cod"]=$cod;
 
 
 <body>
-  <a href="carrer_boss_interface.php">Derivaciones</a><br>
+  <a href="derivationForm_interface.php">Derivaciones</a><br>
 </body>
-<form action="../functionaries/functionary_selection.php" method="post">
+<form action="../functionaryInterface_selection.php" method="post">
   <input type="hidden" value="<?php echo $run_f;?>">
   <button type="submit">Regresar</button>
 </form>

@@ -12,25 +12,7 @@ $_SESSION["cod"]=$cod;
 
 //criterios academicos
 $criteriaAcad=pg_query($db,"SELECT * FROM criteria WHERE type='a'");
-$criteriaSocEm=pg_query($db,"SELECT * FROM criteria WHERE type='s'");
-/* $asignaturas='El/la est. presenta dificultades para comprender e integrar contenidos en más de una asignatura.';
-$asignatura='Presenta series dificultades en una asignatura y ésta representa una problematica para llegar a la titulación.';
-$vacios_p='Podría evidenciarse: problemáticas asociadas a organización del tiempo, ausencia de hábito, estrategias, métodos de estudio.';
-$reprobacion='Reprobación del ciclo básico.';
-$causal_eliminacion='Causal de eliminación';
-
-//criterios socioEmoiconales
-
-$desmotivacion='Desmotivacion';
-$frustracion='Frustración';
-$hipersensibilidad='Hipersensibilidad';
-$ans_ang='Ansiedad y Angustia';
-$estres='Estres academico';
-$desesperanza='Desesperanza';
-$desadaptacion='Desadaptacion';
-$prob_voc='Problemas Vocacionales';
-$dif_soc='Dificultades en las relaciones sociales';
-$dif_com='Dificultades en la comunicación y expresión oral'; */
+$criteriaSocEm=pg_query($db,"SELECT * FROM criteria WHERE type='s'")
 
 
  ?>
@@ -39,7 +21,6 @@ $dif_com='Dificultades en la comunicación y expresión oral'; */
   <head>
   <meta charset="utf-8">
   <title>select</title>
-  <link rel="stylesheet" type="text/css" href="../assets/css/derivationFormulary.css"/>
   <script src="../assets/js/derivationScript.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
@@ -54,7 +35,7 @@ $dif_com='Dificultades en la comunicación y expresión oral'; */
   </head>
   <body>
     <p>Sample</p>
-  <form name="derivation" action="../functionaries/send_derivation.php" method="POST">
+  <form name="derivation" action="derivationProcess/analize_derivation.php" method="POST">
     Estudiante <br>
     <select id="xd" name="run" required>
       <option value="">Seleccione un estudiante</option>
@@ -82,7 +63,7 @@ $dif_com='Dificultades en la comunicación y expresión oral'; */
   <textarea id="confirmationText" class="text" cols="70" rows ="5" name="comment" required placeholder="Comentarios y Observaciones con respecto al estudiante derivado."></textarea> <br>
   <input type="submit">
   </form>
-<form action="../functionaries/carrerInterface_selection.php" method="post">
+<form action="carrerInterface_selection.php" method="post">
   <input type="hidden" value="<?php echo $cod; ?>" name="cod">
   <button type="submit">Regresar</button>
 </form>

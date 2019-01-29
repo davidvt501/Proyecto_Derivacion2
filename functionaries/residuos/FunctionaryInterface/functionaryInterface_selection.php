@@ -19,9 +19,9 @@ $result2=pg_query($db,$sql_program);
  <head>
  <meta charset="utf-8">
  <title>select</title>
- <link rel="stylesheet" type="text/css" href="../assets/css/funcionarios.css">
- <link rel="stylesheet" type="text/css" href="../assets/css/boxes.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/submit.css">
+ <link rel="stylesheet" type="text/css" href="../../assets/css/funcionarios.css">
+ <link rel="stylesheet" type="text/css" href="../../assets/css/boxes.css">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/submit.css">
  <style>
 br {
 display: block;
@@ -35,8 +35,8 @@ margin: 2px 0;
 		<form method="post">
 		</form>
 		<div>
-		<form name="hola" action="../functionaries/carrerInterface_selection.php" method="post">
-		<img src="../assets/images/boss_carrer.png" alt="carrera" height="190" width="190">
+		<form name="hola" action="carrerBoss/carrerInterface_selection.php" method="post">
+		<img src="../../assets/images/boss_carrer.png" alt="carrera" height="190" width="190">
 		<p>Seleccione una carrera</p>
 		<select id="soflow-color" name="cod" required>
 			<?php
@@ -55,8 +55,8 @@ margin: 2px 0;
 		<form method="post">
 		</form>
 		<div>
-		<form name="hola" action="../functionaries/progInterface_selection.php" method="post">
-		<img src="../assets/images/program2.png" alt="carrera" height="190" width="190">
+		<form name="hola" action="programFunctionary/progInterface_selection.php" method="post">
+		<img src="../../assets/images/program2.png" alt="carrera" height="190" width="190">
 		<p>Seleccione un programa</p>
 		<select id="soflow-color" name="cod" required>
 			<?php
@@ -75,9 +75,9 @@ margin: 2px 0;
 		<form method="post">
 		</form>
 		<div>
-		<form name="hola" action="../functionaries/change_password.php" method="post">
+		<form name="hola" action="password/change_password.php" method="post">
 		<br>
-		<img src="../assets/images/key.png" alt="carrera" height="190" width="190">
+		<img src="../../assets/images/key.png" alt="carrera" height="190" width="190">
 		<p>Cambiar contraseña</p>
 		<br>
 		<br>

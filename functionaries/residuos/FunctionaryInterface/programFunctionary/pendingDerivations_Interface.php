@@ -12,8 +12,8 @@ INNER JOIN program ON derivation.cod_program=program.cod_program
 INNER JOIN student ON student.run = derivation.run_student
 INNER JOIN functionary ON derivation.run_functionary = functionary.run
 INNER JOIN carrer_student ON derivation.run_student = carrer_student.run
-WHERE derivation_status=2 AND derivation.cod_program='$cod_program'
-ORDER BY datetime_done DESC";
+WHERE derivation_status=0 AND derivation.cod_program='$cod_program'
+ORDER BY datetime_derivated";
 
 $exe=pg_query($db,$consultaderivaciones);
 
@@ -23,7 +23,7 @@ $exe=pg_query($db,$consultaderivaciones);
   <head>
   <meta charset="utf-8">
   <title>select</title>
-  <link rel="stylesheet" type="text/css" href="../assets/css/tablestyle.css">
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/tablestyle.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -49,8 +49,7 @@ $exe=pg_query($db,$consultaderivaciones);
         <th>Carrera</th>
         <th>Fecha de la Derivacion</th>
         <th>Fecha Programada</th>
-        <th>Fecha Terminada</th>
-        <th>...<th>
+        <th></th>
         </tr>
       </thead>
 	  </table>
@@ -72,11 +71,11 @@ $exe=pg_query($db,$consultaderivaciones);
 }else{
 	echo $mostrar['datetime_programmed'];
 }
+		  echo $mostrar['datetime_programmed']
 
 		  ?></td>
-      <td><?php echo $mostrar['datetime_done'];?><td>
           <?php echo '<input type="hidden" name="id" value="'.$mostrar['cod_derivation'].'">'; ?>
-          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Revisar</button>'?></td>
+          <td><?php echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'.$mostrar['cod_derivation'].'">Programar</button>'?></td>
         </tr>
 		<!-- Modal -->
   <?php echo '<div class="modal fade" id="myModal'.$mostrar['cod_derivation'].'" role="dialog">'?>
@@ -89,12 +88,11 @@ $exe=pg_query($db,$consultaderivaciones);
         echo '<h4 class="modal-title">Derivacion N°:'.$mostrar['cod_derivation'].'</h4>';
         echo '</div>';
         echo '<div class="modal-body">';
+		echo '<form action="schedule_derivation.php" method="post">';
 		echo'<p>Alumno derivado: '.$mostrar['student_name'].'';
         echo'<p>Funcionario que Deriva: '.$mostrar['functionary_name'].'';
-		echo'<p>Carrera: '.$mostrarName['name'].'';
+		echo'<p>Funcionario que Deriva: '.$mostrarName['name'].'';
 		echo'<p>Fecha de la Derivacion: '.$mostrar['datetime_derivated'].'';
-    echo'<p>Fecha Programada: '.$mostrar['datetime_programmed'].'';
-    echo'<p>Fecha Finalizada: '.$mostrar['datetime_done'].'';
 		$criteria = $mostrar['criteria'];
 		$criteria_lista=json_decode($criteria);
 		echo "<p>Criterios considerados:</p>";
@@ -103,11 +101,15 @@ $exe=pg_query($db,$consultaderivaciones);
 			  echo " <li>$criteria_lista[$i]</li>";
 			  echo "</ul>";
 }
-    echo '<p>Comentario</p> <br>';
-    echo $mostrar['comment'];
+    echo '<p>Comentario: '.$mostrar['comment'].' <br>';
+		echo '<input id="date" type="date" name="date" required>';
+		echo '<input id="time" type="time" name="time" required>';
 		echo '<input type="hidden" name="cod" value="'.$mostrar['cod_derivation'].'">';
 		echo'</div>';
         echo'<div class="modal-footer">';
+        echo '<input type="hidden" value="'.$cod_program.'" name="cod_program">';
+		echo'<button type="submit" class="btn btn-default">Enviar</button>';
+		echo'</form>';
         echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>';
         echo'</div>';
 		echo'</div>';
@@ -139,9 +141,10 @@ $exe=pg_query($db,$consultaderivaciones);
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="../assets/js/index.js"></script>
 </div>
-<form action="http://localhost/Proyecto_Derivacion2/functionaries/progInterface_selection.php" method="post">
+<form action="progInterface_selection.php" method="post">
 <button type="submit">Regresar</button>
 <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
 </form>
+
   </body>
   </html>

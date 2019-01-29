@@ -25,7 +25,7 @@ $_SESSION["cod"]=$cod_program;
 </head>
 
 <body>
-  <form action="../functionaries/carrerInterface_selection.php" method="post">
+  <form action="../carrerInterface_selection.php" method="post">
     <input type="hidden" value="<?php echo $cod_program;?>" name="cod">
 <button type="submit">Regresar</button>
   </form>

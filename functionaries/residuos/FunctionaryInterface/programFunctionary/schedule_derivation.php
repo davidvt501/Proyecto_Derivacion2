@@ -26,8 +26,8 @@ $_SESSION["cod"]=$cod_program;
 <head>
 </head>
 <body>
-<form action="http://localhost/Proyecto_Derivacion2/functionaries/pending_Interface.php" method="post">
-<button type="submit">
+<form action="pendingDerivations_Interface.php" method="post">
+<button type="submit">Regresar</button>
 </form>
 </body>
 </html>

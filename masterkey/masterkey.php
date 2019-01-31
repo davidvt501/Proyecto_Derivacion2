@@ -263,5 +263,21 @@ $result_p=pg_query($db,$sql_p);
 </form>
 </ul>
 
+<p>Agregar Criterios</p>
+<ul>
+<form name="criteria" action="criteria/add_criteria.php" method="post">
+	<li>Descripcion del criterio</li>
+	<textarea id="confirmationText" class="text" cols="70" rows ="5" name="criteria" required placeholder="Describa aca el contenido del criterio"></textarea> <br>
+<li>Tipo de criterio</Li>
+	<select name="type" required>
+		<option value="" selected>Seleccione un tipo</option>
+			<option value="a">Academico</option>
+			<option value="s">Socio Emocional</option>
+	</select>
+	<br>
+	<input type="submit" value="Enviar">
+</form>
+</ul>
+
 </body>
 </html>

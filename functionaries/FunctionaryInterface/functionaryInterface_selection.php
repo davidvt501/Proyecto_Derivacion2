@@ -21,15 +21,32 @@ $result2=pg_query($db,$sql_program);
  <title>select</title>
  <link rel="stylesheet" type="text/css" href="../../assets/css/funcionarios.css">
  <link rel="stylesheet" type="text/css" href="../../assets/css/boxes.css">
-  <link rel="stylesheet" type="text/css" href="../../assets/css/submit.css">
  <style>
 br {
 display: block;
 margin: 2px 0;
 }
  </style>
+ <style>
+body {
+margin: 0;
+}
+
+.header {
+text-align: center;
+background: #1abc9c;
+color: white;
+font-size: 5px;
+}
+</style>
  </head>
  <body>
+
+
+	 <div class="header">
+ <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
+</div>
+
 
 	<div class="card card-1>
 		<form method="post">
@@ -46,7 +63,7 @@ margin: 2px 0;
 
 			?>
 		</select>
-		<input type="submit">
+		<input type="submit" value="Acceder">
 		</form>
 		</div>
 	</div>
@@ -66,7 +83,7 @@ margin: 2px 0;
 
 			?>
 		</select>
-		<input type="submit">
+		<input type="submit" value="Acceder">
 		</form>
 		</div>
 	</div>

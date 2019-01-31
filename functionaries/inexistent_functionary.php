@@ -1,14 +1,15 @@
 <?php
 session_start();
 $campus=$_SESSION["campus"];
-$_SESSION["campus"]=$campus;
-echo 'Este funcionario tiene permisos revocados o ya no pertenece a nuestra institucion.'
-
  ?>
 <html>
 <head>
 </head>
 <body>
-  <button action="../index.php">Regresar</button>
+  <p>Los datos fueron ingresados de manera incorrecta o corresponden al de otro campus.</p>
+<form action="../index.php" method="post">
+  <button>Regresar</button>
+  <input type="hidden" name="campus" value="<?php echo $campus?>">
+</form>
 </body>
  <html>

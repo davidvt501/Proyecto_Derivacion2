@@ -7,6 +7,7 @@ $credentials = "user = postgres password=1234";
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
 $campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 $sql="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
 $sql_p="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
 
@@ -174,7 +175,7 @@ $result_p=pg_query($db,$sql_p);
 		<select id="xd" name="run" required>
 			<option value="">Seleccione el funcionario</option>
 			<?php
-			$sql4="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
+			$sql4="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
 					$result4=pg_query($db,$sql4);
 	while ($mostrar=pg_fetch_assoc($result4)){
 		echo '<option name="run" value="'.$mostrar['run'].'">'.$mostrar['name'].'</option>';
@@ -192,7 +193,7 @@ $result_p=pg_query($db,$sql_p);
 		<select id="xd" name="run" required>
 			<option value="">Seleccione el funcionario</option>
 			<?php
-			$sql4="SELECT * FROM functionary WHERE functionality_state=false ORDER BY name";
+			$sql4="SELECT * FROM functionary WHERE functionality_state=false AND campus='$campus' ORDER BY name";
 					$result4=pg_query($db,$sql4);
 	while ($mostrar=pg_fetch_assoc($result4)){
 		echo '<option name="run" value="'.$mostrar['run'].'">'.$mostrar['name'].'</option>';
@@ -205,7 +206,7 @@ $result_p=pg_query($db,$sql_p);
 
 <p>Agregar Carrera</p>
 <ul>
-<form name="carrera_a" action="../masterkey/add_carrer.php" method="POST">
+<form name="carrera_a" action="add_carrer.php" method="POST">
 	<li>Nombre de la Carrera</li>
   <input type="text" name="name" maxlength="100" required><br>
   <li>Codigo de la Carrera</li>
@@ -219,14 +220,8 @@ $result_p=pg_query($db,$sql_p);
 <ul>
 <form name="carrera_b" action="../masterkey/carrer/carrerRemoved.php" method="POST">
 	<?php
-	/* $host        = "host = localhost";
-	$port        = "port = 5432";
-	$dbname      = "dbname = db_derv";
-	$credentials = "user = postgres password=1234"; */
 
-	$db = pg_connect( "$host $port $dbname $credentials"  );
-
-	$lista_carreras=pg_query($db,"SELECT * FROM carrer WHERE active!=false ORDER BY name")
+	$lista_carreras=pg_query($db,"SELECT * FROM carrer WHERE active!=false AND campus='$campus' ORDER BY name")
 	 ?>
 	<li>Carrera a eliminar:</li>
   <select name="cod_c" required>
@@ -239,7 +234,7 @@ $result_p=pg_query($db,$sql_p);
 </form>
 </ul>
 
-<p>Agregar Programa</p>
+<p>Agregar Programa de Apoyo</p>
 <ul>
 <form name="programa_a" action="../masterkey/add_program.php" method="POST">
 	<li>Nombre del Programa</li>
@@ -250,18 +245,12 @@ $result_p=pg_query($db,$sql_p);
 </form>
 </ul>
 
-<p>Borrar Programa</p>
+<p>Borrar Programa de Apoyo</p>
 <ul>
 <form name="programa_b" action="../masterkey/program/programRemoved.php" method="POST">
 	<?php
-	$host        = "host = localhost";
-	$port        = "port = 5432";
-	$dbname      = "dbname = db_derv";
-	$credentials = "user = postgres password=1234";
 
-	$db = pg_connect( "$host $port $dbname $credentials"  );
-
-	$lista_prog=pg_query($db,"SELECT * FROM program WHERE active!=false ORDER BY name")
+	$lista_prog=pg_query($db,"SELECT * FROM program WHERE active!=false AND campus='$campus' AND type='a' ORDER BY name")
 	 ?>
 	<li>Programa a eliminar:</li>
   <select name="cod_p" required>

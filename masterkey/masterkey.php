@@ -5,9 +5,14 @@ $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
 
 $db = pg_connect( "$host $port $dbname $credentials"  );
+session_start();
+$campus=$_SESSION["campus"];
+$sql="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
+$sql_p="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
 
-$sql="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
-		$result=pg_query($db,$sql);
+
+$result=pg_query($db,$sql);
+$result_p=pg_query($db,$sql_p);
 
 ?>
 
@@ -71,7 +76,7 @@ $sql="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
 <body>
 
 
-<p>Asignar permisos</p>
+<p>Asignar permisos (Carrera)</p>
 <ul>
 <form name="give" action="../masterkey/give_permits.php" method="POST" >
 <li>Funcionario:</li>
@@ -83,7 +88,7 @@ $sql="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
           }
         ?>
             </select>
-						<li>Carrera / Programa</li>
+						<li>Carrera</li>
 <select id="xd" name="permits_c" required>
 						              <option value="" selected>Seleccione la carrera u programa</option>
 						              <?php
@@ -92,11 +97,6 @@ $sql="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
 						          while ($mostrar=pg_fetch_assoc($result2)){
 						            echo '<option name="cod_carrer" value="'.$mostrar['cod_carrer'].'">'.$mostrar['name'].'</option>';
 						          }
-											$sql3="SELECT * from program WHERE active!=false AND type='a' ORDER BY name";
-											$result3=pg_query($db,$sql3);
-											while ($mostrar=pg_fetch_assoc($result3)){
-						            echo '<option name="cod_program" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';
-						          }
 						        ?>
 						            </select>
 
@@ -104,10 +104,33 @@ $sql="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
 </form>
 </ul>
 
-<script>
+<p>Asignar permisos (Programa)</p>
+<ul>
+<form name="give" action="../masterkey/give_permits.php" method="POST" >
+<li>Funcionario:</li>
+<select id="" name="run" required>
+              <option value="" selected>Seleccione al Funcionario:</option>
+              <?php
+          while ($mostrar=pg_fetch_assoc($result_p)){
+            echo '<option name="run" value="'.$mostrar['run'].'">'.$mostrar['name'].'</option>';
+          }
+        ?>
+            </select>
+						<li>Programa</li>
+<select id="xd" name="permits_c" required>
+						              <option value="" selected>Seleccione la carrera u programa</option>
+						              <?php
+													$sql3="SELECT * from program WHERE active!=false AND type='a' ORDER BY name";
+													$result3=pg_query($db,$sql3);
+													while ($mostrar=pg_fetch_assoc($result3)){
+														echo '<option name="cod_program" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';
+													}
+						        ?>
+						            </select>
 
-console.log('xd');
-</script>
+<li><input type="submit" value="Asignar" /></li>
+</form>
+</ul>
 
 
 <p>Revocar permisos</p>
@@ -117,16 +140,14 @@ console.log('xd');
 		<select id="run_r" name="run_r" required>
 			<option value="" selected>Seleccione el funcionario</option>
 			<?php
-			$sql_f="SELECT * FROM functionary WHERE functionality_state!=false ORDER BY name";
+			$sql_f="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
 					$result_f=pg_query($db,$sql_f);
 	while ($mostrar=pg_fetch_assoc($result_f)){
 		echo '<option name="run" value="'.$mostrar['run'].'">'.$mostrar['name'].'</option>';
 	}
 	?>
 		</select>
-		<li>Permiso</li>
-		<select id="cod_r" name="cod_r" required></select>
-		<li><input type="submit"/></li>
+		<input type="submit" value="Continuar"/>
 	</form>
 </ul>
 

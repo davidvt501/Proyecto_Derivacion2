@@ -16,10 +16,12 @@ $credentials = "user = postgres password=1234";
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
 $_SESSION["run_f"]=$_POST['run'];
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 
-$result = pg_query($db,"SELECT * FROM functionary where run='$_POST[run]' AND pass='$_POST[pass]'");
+$result = pg_query($db,"SELECT * FROM functionary where run='$_POST[run]' AND pass='$_POST[pass]' AND campus='$campus'");
 $rows = pg_num_rows($result);
-$res2=pg_query($db,"SELECT * FROM master_key where run='$_POST[run]' AND pass='$_POST[pass]'");
+$res2=pg_query($db,"SELECT * FROM master_key where run='$_POST[run]' AND pass='$_POST[pass]' AND campus='$campus'");
 $rows2 = pg_num_rows($res2);
 
 if ($rows!=0){
@@ -28,12 +30,12 @@ if ($rows!=0){
 	if($mostrar_e['functionality_state']===t){
 		header('Location: ../functionaries/FunctionaryInterface/functionaryInterface_selection.php');
 	}else{
-		header('Location: ../functionaries/inexistent_functionary.php');
+		header('Location: ../functionaries/unactive_functionary.php');
 	}
 }else if($rows2!=0){
 	header('Location: ../masterkey/masterkey.php');
 }else{
-	echo 'No se ingresaron los datos de la manera correcta correcta, intentelo nuevamente';
+	header('Location: ../functionaries/inexistent_functionary.php');
 }
 
 

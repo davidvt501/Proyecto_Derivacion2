@@ -1,5 +1,16 @@
 <?php
+session_start();
 
-echo 'Si';
-
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 ?>
+<head>
+</head>
+<body>
+  <p>Programa de Apoyo creado de forma correcta</p>
+<form action="../masterkey.php" method="post">
+  <button>Regresar</button>
+  <input type="hidden" name="campus" value="<?php echo $campus?>">
+</form>
+</body>
+</html>

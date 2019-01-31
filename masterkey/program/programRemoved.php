@@ -4,8 +4,11 @@ $host        = "host = localhost";
 $port        = "port = 5432";
 $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
+session_start();
 
 $db = pg_connect( "$host $port $dbname $credentials"  );
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 
 $cod=$_POST['cod_p'];
 
@@ -27,6 +30,10 @@ $exe2=pg_query($db,$delete_permits);
 <head>
 
 <body>
-<p> El programa <?php echo $name['name']?> ha sido removido con sus permisos respectivos </p>
+<p> El programa de apoyo: <?php echo $name['name']?> ha sido removido con sus permisos respectivos </p>
+<form action="../masterkey.php" method="post">
+  <button>Regresar</button>
+  <input type="hidden" name="campus" value="<?php echo $campus?>">
+</form>
 </body>
 </html>

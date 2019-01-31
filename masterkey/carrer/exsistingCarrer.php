@@ -1,7 +1,8 @@
 <?php
 session_start();
-$_SESSION["campus"]=$campus;
+
 $campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 ?>
 <head>
 </head>

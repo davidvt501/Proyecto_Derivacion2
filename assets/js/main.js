@@ -1,118 +1,212 @@
 /*
-	Full Motion by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
-	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)'
-	});
+	var $window = $(window),
+		$body = $('body'),
+		$wrapper = $('#wrapper'),
+		$main = $('#main'),
+		$panels = $main.children('.panel'),
+		$nav = $('#nav'), $nav_links = $nav.children('a');
 
-	$(function() {
+	// Breakpoints.
+		breakpoints({
+			xlarge:  [ '1281px',  '1680px' ],
+			large:   [ '981px',   '1280px' ],
+			medium:  [ '737px',   '980px'  ],
+			small:   [ '361px',   '736px'  ],
+			xsmall:  [ null,      '360px'  ]
+		});
 
-		var $window = $(window),
-			$body = $('body');
+	// Play initial animations on page load.
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+	// Nav.
+		$nav_links
+			.on('click', function(event) {
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
+				var href = $(this).attr('href');
+
+				// Not a panel link? Bail.
+					if (href.charAt(0) != '#'
+					||	$panels.filter(href).length == 0)
+						return;
+
+				// Prevent default.
+					event.preventDefault();
+					event.stopPropagation();
+
+				// Change panels.
+					if (window.location.hash != href)
+						window.location.hash = href;
+
 			});
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+	// Panels.
 
-		// Banner.
-			var $banner = $('#banner');
+		// Initialize.
+			(function() {
 
-			if ($banner.length > 0) {
+				var $panel, $link;
 
-				// IE fix.
-					if (skel.vars.IEVersion < 12) {
+				// Get panel, link.
+					if (window.location.hash) {
 
-						$window.on('resize', function() {
-
-							var wh = $window.height() * 0.60,
-								bh = $banner.height();
-
-							$banner.css('height', 'auto');
-
-							window.setTimeout(function() {
-
-								if (bh < wh)
-									$banner.css('height', wh + 'px');
-
-							}, 0);
-
-						});
-
-						$window.on('load', function() {
-							$window.triggerHandler('resize');
-						});
+				 		$panel = $panels.filter(window.location.hash);
+						$link = $nav_links.filter('[href="' + window.location.hash + '"]');
 
 					}
 
-				// Video check.
-					var video = $banner.data('video');
+				// No panel/link? Default to first.
+					if (!$panel
+					||	$panel.length == 0) {
 
-					if (video)
-						$window.on('load.banner', function() {
+						$panel = $panels.first();
+						$link = $nav_links.first();
 
-							// Disable banner load event (so it doesn't fire again).
-								$window.off('load.banner');
+					}
 
-							// Append video if supported.
-								if (!skel.vars.mobile
-								&&	!skel.breakpoint('large').active
-								&&	skel.vars.IEVersion > 9)
-									$banner.append('<video autoplay loop><source src="' + video + '.mp4" type="video/mp4" /><source src="' + video + '.webm" type="video/webm" /></video>');
+				// Deactivate all panels except this one.
+					$panels.not($panel)
+						.addClass('inactive')
+						.hide();
 
-						});
+				// Activate link.
+					$link
+						.addClass('active');
 
-				// More button.
-					$banner.find('.more')
-						.addClass('scrolly');
+				// Reset scroll.
+					$window.scrollTop(0);
 
-			}
+			})();
 
-		// Scrolly.
-			$('.scrolly').scrolly();
+		// Hashchange event.
+			$window.on('hashchange', function(event) {
 
-		// Poptrox.
-			$window.on('load', function() {
+				var $panel, $link;
 
-				var $thumbs = $('.thumbnails');
+				// Get panel, link.
+					if (window.location.hash) {
 
-				if ($thumbs.length > 0)
-					$thumbs.poptrox({
-						onPopupClose: function() { $body.removeClass('is-covered'); },
-						onPopupOpen: function() { $body.addClass('is-covered'); },
-						baseZIndex: 10001,
-						useBodyOverflow: false,
-						overlayColor: '#222226',
-						overlayOpacity: 0.75,
-						popupLoaderText: '',
-						fadeSpeed: 500,
-						usePopupDefaultStyling: false,
-						windowMargin: (skel.breakpoint('small').active ? 5 : 50)
-					});
+				 		$panel = $panels.filter(window.location.hash);
+						$link = $nav_links.filter('[href="' + window.location.hash + '"]');
+
+						// No target panel? Bail.
+							if ($panel.length == 0)
+								return;
+
+					}
+
+				// No panel/link? Default to first.
+					else {
+
+						$panel = $panels.first();
+						$link = $nav_links.first();
+
+					}
+
+				// Deactivate all panels.
+					$panels.addClass('inactive');
+
+				// Deactivate all links.
+					$nav_links.removeClass('active');
+
+				// Activate target link.
+					$link.addClass('active');
+
+				// Set max/min height.
+					$main
+						.css('max-height', $main.height() + 'px')
+						.css('min-height', $main.height() + 'px');
+
+				// Delay.
+					setTimeout(function() {
+
+						// Hide all panels.
+							$panels.hide();
+
+						// Show target panel.
+							$panel.show();
+
+						// Set new max/min height.
+							$main
+								.css('max-height', $panel.outerHeight() + 'px')
+								.css('min-height', $panel.outerHeight() + 'px');
+
+						// Reset scroll.
+							$window.scrollTop(0);
+
+						// Delay.
+							window.setTimeout(function() {
+
+								// Activate target panel.
+									$panel.removeClass('inactive');
+
+								// Clear max/min height.
+									$main
+										.css('max-height', '')
+										.css('min-height', '');
+
+								// IE: Refresh.
+									$window.triggerHandler('--refresh');
+
+								// Unlock.
+									locked = false;
+
+							}, (breakpoints.active('small') ? 0 : 500));
+
+					}, 250);
 
 			});
 
-		// Initial scroll.
-			$window.on('load', function() {
-				$window.trigger('scroll');
-			});
+	// IE: Fixes.
+		if (browser.name == 'ie') {
 
-	});
+			// Fix min-height/flexbox.
+				$window.on('--refresh', function() {
+
+					$wrapper.css('height', 'auto');
+
+					window.setTimeout(function() {
+
+						var h = $wrapper.height(),
+							wh = $window.height();
+
+						if (h < wh)
+							$wrapper.css('height', '100vh');
+
+					}, 0);
+
+				});
+
+				$window.on('resize load', function() {
+					$window.triggerHandler('--refresh');
+				});
+
+			// Fix intro pic.
+				$('.panel.intro').each(function() {
+
+					var $pic = $(this).children('.pic'),
+						$img = $pic.children('img');
+
+					$pic
+						.css('background-image', 'url(' + $img.attr('src') + ')')
+						.css('background-size', 'cover')
+						.css('background-position', 'center');
+
+					$img
+						.css('visibility', 'hidden');
+
+				});
+
+		}
 
 })(jQuery);

@@ -38,6 +38,9 @@ font-size: 5px;
 
 
 	 <div class="header">
+     <form action="masterkeyInterface_selection.php">
+     <input type="submit" value="Regresar"></button>
+   </form>
  <a href="http://www.ucn.cl/" class="image fit"><img src="../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
 </div>
 
@@ -46,11 +49,11 @@ font-size: 5px;
 	<form method="post">
 	</form>
 	<div>
-	<p>Funcionarios y Permisos</p>
-	<form name="empty" action="functionaries_and_permits/mainInterface.php">
-	<img src="../assets/images/employees.png" alt="carrera" height="190" width="190">
+	<p>Modificar Carreras</p>
+	<form name="empty" action="#">
+	<img src="../assets/images/boss_carrer.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
-	</form>
+</form>
 	</div>
 </div>
 
@@ -58,25 +61,14 @@ font-size: 5px;
 	<form method="post">
 	</form>
 	<div>
-	<p>Carreras y Programas</p>
-	<form name="empty" action="carrer_programInterface.php">
-	<img src="../assets/images/university.png" alt="carrera" height="190" width="190">
+	<p>Modificar Programas</p>
+	<form name="empty" action="#">
+	<img src="../assets/images/program2.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 	</form>
 	</div>
 </div>
 
-<div class="card card-3>
-	<form method="post">
-	</form>
-	<div>
-	<p>Criterios y Estudiantes</p>
-	<form name="empty" action="criteria_and_studentsInterface.php">
-	<img src="../assets/images/reading.png" alt="carrera" height="190" width="190">
-	<br> <input type="submit" value="Acceder">
-	</form>
-	</div>
-</div>
 
  </body>
  </html>

@@ -13,8 +13,8 @@ $_SESSION["campus"]=$campus;
  <head>
  <meta charset="utf-8">
  <title>select</title>
- <link rel="stylesheet" type="text/css" href="../assets/css/funcionarios.css">
- <link rel="stylesheet" type="text/css" href="../assets/css/boxes.css">
+ <link rel="stylesheet" type="text/css" href="../../assets/css/funcionarios.css">
+ <link rel="stylesheet" type="text/css" href="../../assets/css/boxes.css">
  <style>
 br {
 display: block;
@@ -38,7 +38,10 @@ font-size: 5px;
 
 
 	 <div class="header">
- <a href="http://www.ucn.cl/" class="image fit"><img src="../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
+     <form action="../masterkeyInterface_selection.php">
+     <input type="submit" value="Regresar"></button>
+   </form>
+ <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
 </div>
 
 
@@ -46,11 +49,11 @@ font-size: 5px;
 	<form method="post">
 	</form>
 	<div>
-	<p>Funcionarios y Permisos</p>
-	<form name="empty" action="functionaries_and_permits/mainInterface.php">
-	<img src="../assets/images/employees.png" alt="carrera" height="190" width="190">
+	<p>Modificar Permisos</p>
+	<form name="empty" action="#">
+	<img src="../../assets/images/permits.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
-	</form>
+</form>
 	</div>
 </div>
 
@@ -58,25 +61,14 @@ font-size: 5px;
 	<form method="post">
 	</form>
 	<div>
-	<p>Carreras y Programas</p>
+	<p>Modificar funcionarios</p>
 	<form name="empty" action="#">
-	<img src="../assets/images/university.png" alt="carrera" height="190" width="190">
+	<img src="../../assets/images/modify_employees.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 	</form>
 	</div>
 </div>
 
-<div class="card card-3>
-	<form method="post">
-	</form>
-	<div>
-	<p>Funcionarios y Permisos</p>
-	<form name="empty" action="#">
-	<img src="../assets/images/reading.png" alt="carrera" height="190" width="190">
-	<br> <input type="submit" value="Acceder">
-	</form>
-	</div>
-</div>
 
  </body>
  </html>

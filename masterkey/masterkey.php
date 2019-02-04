@@ -154,7 +154,7 @@ $result_p=pg_query($db,$sql_p);
 
 <p>Agregar funcionarios</p>
 <ul>
-	<form name="insert" action="../masterkey/add.php" method="POST">
+	<form name="insert" action="../masterkey/add_functionary.php" method="POST">
 			<li>RUN:</li>
 			<input class="input_rut" type="text" name="run" placeholder="RUN completo sin puntos" oninput="checkRut(this)" maxlength="12" required>
 		 <li>Nombre Completo</li>
@@ -170,7 +170,7 @@ $result_p=pg_query($db,$sql_p);
 
 <p>Desactivar funcionarios</p>
 <ul>
-	<form name="delete" action="../masterkey/delete.php" method="POST">
+	<form name="delete" action="../masterkey/delete_functionary.php" method="POST">
 		<li>Funcionario</li>
 		<select id="xd" name="run" required>
 			<option value="">Seleccione el funcionario</option>
@@ -188,7 +188,7 @@ $result_p=pg_query($db,$sql_p);
 
 <p>Reactivar funcionarios</p>
 <ul>
-	<form name="delete" action="../masterkey/reactivate.php" method="POST">
+	<form name="delete" action="../masterkey/reactivate_functionary.php" method="POST">
 		<li>Funcionario</li>
 		<select id="xd" name="run" required>
 			<option value="">Seleccione el funcionario</option>

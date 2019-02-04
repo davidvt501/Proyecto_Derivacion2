@@ -33,7 +33,7 @@ if ($rows!=0){
 		header('Location: ../functionaries/unactive_functionary.php');
 	}
 }else if($rows2!=0){
-	header('Location: ../masterkey/masterkey.php');
+	header('Location: ../masterkey/masterkeyInterface_selection.php');
 }else{
 	header('Location: ../functionaries/inexistent_functionary.php');
 }

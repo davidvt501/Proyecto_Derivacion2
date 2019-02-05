@@ -55,14 +55,10 @@ function buscarSelect()
 	}
 }
 </script>
-
 <script>
-	$(function(){
-  	$(document).on('change','#soflow-color','#buscar',function(){ //detectamos el evento change
-    	var value = $(this).val();//sacamos el valor del select
-      $('#myInput').val(value);//le agregamos el valor al input (notese que el input debe tener un ID para que le caiga el valor)
-    });
-  });
+$(document).on('change', '#soflow-color', function(event) {
+     $('#runSel').val($("#soflow-color option:selected").val());
+});
 </script>
  </head>
  <body>
@@ -91,7 +87,7 @@ function buscarSelect()
         ?>
             </select>
   </p>
-  <input id="myInput">
+  <input id="runSel" name="nom_Servicio" >
   <button type="submit">Enviar</button>
 </form>
     </div>

@@ -9,6 +9,7 @@ $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
 $run=$_POST["run"];
+$_SESSION["run"]=$run;
 
 $conFuncionario="SELECT * FROM functionary WHERE run='$run'";
 $exe=pg_query($db,$conFuncionario);
@@ -84,7 +85,66 @@ function buscarSelect()
       }
       ?>
       <br>
-      <a href="https://www.google.com/">Haz click</a>
+      <p><b>Asignar permisos</b></p>
+      <form name="give" action="give_permits.php" method="POST" >
+      						Carrera:
+      <select id="xd" name="permits_c" required>
+      						              <option value="" selected>Seleccione una carrera</option>
+      						              <?php
+      													$sql2="SELECT * FROM carrer WHERE active!=false ORDER BY name";
+      													$result2=pg_query($db,$sql2);
+      						          while ($mostrar=pg_fetch_assoc($result2)){
+      						            echo '<option name="cod_carrer" value="'.$mostrar['cod_carrer'].'">'.$mostrar['name'].'</option>';
+      						          }
+      						        ?>
+      						            </select>
+                              <input type="submit" value="Asignar" />
+                            </form>
+                              <br>
+                              <form name="give" action="give_permits.php" method="POST">
+                                Programa:
+                              <select id="xd" name="permits_c" required>
+                              						              <option value="" selected>Seleccione un programa</option>
+                              						              <?php
+                              													$sql3="SELECT * from program WHERE active!=false AND type='a' ORDER BY name";
+                              													$result3=pg_query($db,$sql3);
+                              													while ($mostrar=pg_fetch_assoc($result3)){
+                              														echo '<option name="cod_program" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';
+                              													}
+                              						        ?>
+                              						            </select>
+<input type="submit" value="Asignar" />
+      </form>
+      <br>
+      <p><b>Revocar Permisos</b></p>
+      <form action="revoke_permits.php" method="POST">
+        Carrera:
+        <select name="cod" required>
+          <option value="" selected>Seleccione una carrera</option>
+          <?php
+          $carrer_con="SELECT * FROM permits_f WHERE permisson_state!=false AND run='$run' AND permisson_type='c'";
+          $result4=pg_query($db,$carrer_con);
+          while($mostrar=pg_fetch_assoc($result4)){
+            echo '<option name="code" value="'.$mostrar['code'].'">'.$mostrar['name'].'</option>';
+          }
+          ?>
+        </select>
+        <input type="submit" value="Revocar" />
+      </form>
+      <form action="revoke_permits.php" method="POST">
+        Programa:
+        <select name="cod" required>
+          <option value="" selected>Seleccione un programa</option>
+          <?php
+          $carrer_con="SELECT * FROM permits_f WHERE permisson_state!=false AND run='$run' AND permisson_type='p'";
+          $result4=pg_query($db,$carrer_con);
+          while($mostrar=pg_fetch_assoc($result4)){
+            echo '<option name="code" value="'.$mostrar['code'].'">'.$mostrar['name'].'</option>';
+          }
+          ?>
+        </select>
+        <input type="submit" value="Revocar" />
+      </form>
     </div>
   </div>
 </div>

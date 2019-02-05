@@ -5,10 +5,18 @@ $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
 session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
+
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
-$sql="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
-$result=pg_query($db,$sql);
+$run=$_POST["run"];
+
+$conFuncionario="SELECT * FROM functionary WHERE run='$run'";
+$exe=pg_query($db,$conFuncionario);
+$resultado=pg_fetch_assoc($exe);
+
+$conPermisos="SELECT * FROM permits_f WHERE run='$run'";
+$exe2=pg_query($db,$conPermisos);
+
 ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -66,28 +74,17 @@ function buscarSelect()
 </div>
 
 <div class="container">
-  <h2>Seleccione un funcionario:</h2>
+  <h2><?php echo $resultado["name"];?></h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <p>Introduzca el RUT del Funcionario</p>
-<form onsubmit="return false">
-  <input type="text" id="buscar"><input type="submit" value="Buscar" onclick="buscarSelect()">
-</form>
-  <p>
-    <form method="post" action="functionary_and_permits.php">
-    <select id="soflow-color" name="run" required>
-      <option value="" selected>Seleccione al Funcionario:</option>
-              <?php
-          while ($mostrar=pg_fetch_assoc($result)){
-            echo '<option name="run" value="'.$mostrar['run'].'">'.$mostrar['name'].'</option>';
-          }
-        ?>
-            </select>
-            <br>
-            <button type="submit">Enviar</button>
-          </form>
-  </p>
-</form>
+      <b>Permisos Actuales:</b> <br>
+      <?php
+      while ($resultadoP=pg_fetch_assoc($exe2)){
+            echo ''.$resultadoP["name"].'<br>';
+      }
+      ?>
+      <br>
+      <a href="https://www.google.com/">Haz click</a>
     </div>
   </div>
 </div>

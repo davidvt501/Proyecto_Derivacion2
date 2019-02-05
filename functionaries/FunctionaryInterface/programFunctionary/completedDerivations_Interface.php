@@ -47,11 +47,10 @@ $exe=pg_query($db,$consultaderivaciones);
         <tr>
         <th>Nombre</th>
         <th>Funcionario que Deriva</th>
-        <th>Carrera</th>
         <th>Fecha de la Derivacion</th>
         <th>Fecha Programada</th>
         <th>Fecha Terminada</th>
-        <th>...<th>
+        <th>..</th>
         </tr>
       </thead>
 	  </table>

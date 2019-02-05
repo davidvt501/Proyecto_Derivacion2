@@ -50,7 +50,7 @@ font-size: 5px;
 	</form>
 	<div>
 	<p>Modificar Permisos</p>
-	<form name="empty" action="#">
+	<form name="empty" action="functionary_selectInterface.php">
 	<img src="../../assets/images/permits.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 </form>

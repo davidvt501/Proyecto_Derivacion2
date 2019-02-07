@@ -8,9 +8,8 @@ $_SESSION["campus"]=$campus;
 </head>
 <body>
   <p>Esta carrera ya existe</p>
-<form action="../masterkey.php" method="post">
+<form action="mainInterface.php" method="post">
   <button>Regresar</button>
-  <input type="hidden" name="campus" value="<?php echo $campus?>">
 </form>
 </body>
 </html>

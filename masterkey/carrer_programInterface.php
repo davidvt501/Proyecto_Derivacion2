@@ -50,7 +50,7 @@ font-size: 5px;
 	</form>
 	<div>
 	<p>Modificar Carreras</p>
-	<form name="empty" action="#">
+	<form name="empty" action="carrer/mainInterface.php">
 	<img src="../assets/images/boss_carrer.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 </form>
@@ -62,7 +62,7 @@ font-size: 5px;
 	</form>
 	<div>
 	<p>Modificar Programas</p>
-	<form name="empty" action="#">
+	<form name="empty" action="program/mainInterface.php">
 	<img src="../assets/images/program2.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 	</form>

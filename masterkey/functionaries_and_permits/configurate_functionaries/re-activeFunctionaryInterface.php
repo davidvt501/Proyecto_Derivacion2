@@ -7,7 +7,7 @@ session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
-$sql="SELECT * FROM functionary WHERE functionality_state!=false AND campus='$campus' ORDER BY name";
+$sql="SELECT * FROM functionary WHERE functionality_state=false AND campus='$campus' ORDER BY name";
 $result=pg_query($db,$sql);
 ?>
 <!DOCTYPE html>
@@ -116,7 +116,7 @@ function buscarSelect()
 </div>
 
 <div class="container">
-  <h2>Desactivar funcionario:</h2>
+  <h2>Re-activar funcionario:</h2>
   <div class="panel panel-default">
     <div class="panel-body">
       <p>Introduzca el RUT del Funcionario</p>
@@ -124,7 +124,7 @@ function buscarSelect()
   <input type="text" id="buscar"><input type="submit" value="Buscar" onclick="buscarSelect()">
 </form>
   <p>
-    <form method="post" action="delete_functionary.php">
+    <form method="post" action="re-active_functionary.php">
     <select id="soflow-color" name="run" required>
       <option value="" selected>Seleccione al Funcionario:</option>
               <?php
@@ -133,7 +133,7 @@ function buscarSelect()
           }
         ?>
             </select>
-            <p> Al proceder, el funcionario perdera todos sus permisos y no aparecera en el sistema, sin embargo sus registros permaneceran guardados.</p>
+            <p> Al proceder, el funcionario volvera a aparecer dentro del sistema.</p>
             <br>
             <button type="submit">Enviar</button>
           </form>

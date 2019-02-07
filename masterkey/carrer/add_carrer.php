@@ -18,13 +18,13 @@ $execute=pg_query($db,$consulta_carrera);
 $rows=pg_num_rows($execute);
 
 if ($rows>0){
-	header('Location: http://localhost/Proyecto_Derivacion2/masterkey/carrer/exsistingCarrer.php');
+	header('Location: exsistingCarrer.php');
 }else{
 
 $nueva_carrera="INSERT INTO carrer values('$cod','$name',true,'$campus')";
 
 $exe=pg_query($db,$nueva_carrera);
-header('Location: http://localhost/Proyecto_Derivacion2/masterkey/carrer/success.php');
+header('Location: success.php');
 }
 
 

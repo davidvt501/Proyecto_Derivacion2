@@ -10,7 +10,6 @@ $_SESSION["campus"]=$campus;
   <p>Carrera creada de forma correcta</p>
 <form action="../masterkey.php" method="post">
   <button>Regresar</button>
-  <input type="hidden" name="campus" value="<?php echo $campus?>">
 </form>
 </body>
 </html>

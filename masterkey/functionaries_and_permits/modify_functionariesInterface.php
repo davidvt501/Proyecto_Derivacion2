@@ -38,7 +38,7 @@ font-size: 5px;
 
 
 	 <div class="header">
-     <form action="../masterkeyInterface_selection.php">
+     <form action="mainInterface.php">
      <input type="submit" value="Regresar"></button>
    </form>
  <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
@@ -62,7 +62,7 @@ font-size: 5px;
 	</form>
 	<div>
 	<p>Modificar funcionarios</p>
-	<form name="empty" action="modify_functionariesInterface.php">
+	<form name="empty" action="#">
 	<img src="../../assets/images/modify_employees.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 	</form>

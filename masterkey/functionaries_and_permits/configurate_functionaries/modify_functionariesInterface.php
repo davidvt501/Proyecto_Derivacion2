@@ -62,7 +62,7 @@ font-size: 5px;
 	</form>
 	<div>
 	<p>Desactivar Funcionarios</p>
-	<form name="empty" action="#">
+	<form name="empty" action="removeFunctionaryInterface.php">
 	<img src="../../../assets/images/remove_employees.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 	</form>

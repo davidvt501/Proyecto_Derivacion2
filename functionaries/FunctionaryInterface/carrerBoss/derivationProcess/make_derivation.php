@@ -14,6 +14,8 @@ $prog=$_SESSION['prog'];
 date_default_timezone_set("America/Santiago");
 $date = date('Y/m/d h:i:s', time());
 $criteriosEncodeados=json_encode($criteriosArray);
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 
 $derivar=pg_query($db,"INSERT INTO derivation (cod_program,run_student,run_functionary,criteria,derivation_status,datetime_derivated,comment)values('$prog','$run_student','$run_functionary','$criteriosEncodeados',0,'$date','$comment')");
 

@@ -5,6 +5,8 @@ $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 
 /* Preparar fecha
 $date=$_POST['date'];

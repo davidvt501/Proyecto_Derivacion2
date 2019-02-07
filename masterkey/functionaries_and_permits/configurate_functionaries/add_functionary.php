@@ -3,9 +3,10 @@ $host        = "host = localhost";
 $port        = "port = 5432";
 $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
+
+session_start();
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
-session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
 
 $consulta="SELECT * FROM functionary where run='$_POST[run]'";

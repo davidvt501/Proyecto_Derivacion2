@@ -9,6 +9,8 @@ $cod=$_SESSION["cod"];
 $run_f=$_SESSION["run_f"];
 $_SESSION["run_f"]=$run_f;
 $_SESSION["cod"]=$cod;
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 
 //criterios academicos
 $criteriaAcad=pg_query($db,"SELECT * FROM criteria WHERE type='a'");

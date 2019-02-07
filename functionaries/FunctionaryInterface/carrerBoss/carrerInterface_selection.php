@@ -7,6 +7,8 @@ $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
 $cod=$_POST["cod"];
 $run_f=$_SESSION["run_f"];
+$campus=$_SESSION["campus"];
+$_SESSION["campus"]=$campus;
 
 echo $run_f;
 $_SESSION["run_f"]=$run_f;

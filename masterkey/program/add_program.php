@@ -8,6 +8,7 @@ $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
 $name=$_POST['name'];
 $cod=$_POST['cod'];
+$type=$_POST['type'];
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
 
@@ -18,13 +19,12 @@ $execute=pg_query($db,$consulta_programa);
 $rows=pg_num_rows($execute);
 
 if ($rows>0){
-	header('Location: http://localhost/Proyecto_Derivacion2/masterkey/program/exsistingProgram.php');
+	header('Location: exsistingProgram.php');
 }else{
-$nuevo_prog="INSERT INTO program values('$cod','$name',true,'a','$campus')";
+$nuevo_prog="INSERT INTO program values('$cod','$name',true,'$type','$campus')";
 
 $exe=pg_query($db,$nuevo_prog);
-echo $campus;
-header('Location: http://localhost/Proyecto_Derivacion2/masterkey/program/success.php');
+header('Location: success.php');
 
 }
  ?>

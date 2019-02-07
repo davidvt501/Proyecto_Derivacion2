@@ -31,9 +31,8 @@ $exe2=pg_query($db,$delete_permits);
 
 <body>
 <p> El programa de apoyo: <?php echo $name['name']?> ha sido removido con sus permisos respectivos </p>
-<form action="../masterkey.php" method="post">
+<form action="mainInterface.php" method="post">
   <button>Regresar</button>
-  <input type="hidden" name="campus" value="<?php echo $campus?>">
 </form>
 </body>
 </html>

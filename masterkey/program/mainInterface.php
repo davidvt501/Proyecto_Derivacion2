@@ -10,7 +10,7 @@ $_SESSION["campus"]=$campus;
 $sql_e="SELECT * FROM program WHERE active!=false AND campus='$campus' AND type='e' ORDER BY name";
 $result_e=pg_query($db,$sql_e);
 $sql_a="SELECT * FROM program WHERE active!=false AND campus='$campus' AND type='a' ORDER BY name";
-$result_a=pg_query($db,$sql_e);
+$result_a=pg_query($db,$sql_a);
 ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -71,31 +71,33 @@ function buscarSelect()
   <h2>Modificar Programa</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <b> Agregar Carrera </b>
-      <p> Ingrese un nombre y codigo para la carrera </p>
-        <form name="carrera_a" action="add_carrer.php" method="POST">
-        	Nombre de la Carrera
+      <b> Agregar Programa</b>
+      <p> Ingrese un nombre y codigo para el programa </p>
+        <form name="carrera_a" action="add_program.php" method="POST">
+        	Nombre del Programa
           <input type="text" name="name" maxlength="100" required>
-          Codigo de la Carrera
+          Codigo del Programa
           <input type="number" name="cod" required>
           <br>
+          <br>
+          Tipo de Programa:
+          <select id="soflow-color" name="type" required>
+            <option value="" selected>Seleccione un Tipo:</option>
+            <option value="e">Programa Estudiantil</option>
+            <option value="a">Programa de Apoyo</option>
+          </select>
           <br>
         	<input type="submit" value="Agregar">
         </form>
         <br>
-      <b>Eliminar Carrera</b>
-      <p>Buscar Carrera por codigo:</p>
-<form onsubmit="return false">
-  <input type="text" id="buscar"><input type="submit" value="Buscar" onclick="buscarSelect()">
-</form>
+      <b>Eliminar Programa de Apoyo</b>
   <p>
-    <p> Buscar Carrera manualmente: </p>
-    <form method="post" action="remove_carrer.php">
-    <select id="soflow-color" name="cod_c" required>
-      <option value="" selected>Seleccione una Carrera:</option>
+    <form method="post" action="remove_program.php">
+    <select id="soflow-color" name="cod_p" required>
+      <option value="" selected>Seleccione una Programa:</option>
               <?php
-          while ($mostrar=pg_fetch_assoc($result)){
-            echo '<option name="run" value="'.$mostrar['cod_carrer'].'">'.$mostrar['name'].'</option>';
+          while ($mostrar=pg_fetch_assoc($result_a)){
+            echo '<option name="run" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';
           }
         ?>
             </select>
@@ -103,6 +105,23 @@ function buscarSelect()
             <button type="submit">Eliminar</button>
           </form>
   </p>
+</form>
+<br>
+<b>Eliminar Programa Estudiantil</b>
+<p>
+<form method="post" action="remove_program.php">
+<select id="soflow-color" name="cod_p" required>
+<option value="" selected>Seleccione una Programa:</option>
+      <?php
+  while ($mostrar=pg_fetch_assoc($result_e)){
+    echo '<option name="run" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';
+  }
+?>
+    </select>
+    <br>
+    <button type="submit">Eliminar</button>
+  </form>
+</p>
 </form>
     </div>
   </div>

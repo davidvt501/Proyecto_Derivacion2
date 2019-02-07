@@ -39,6 +39,10 @@ font-size: 5px;
 
 	 <div class="header">
  <a href="http://www.ucn.cl/" class="image fit"><img src="../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
+ <form action="../index.php" method="post">
+   <input type="hidden" value="<?php echo $campus;?>" name="campus">
+ <input type="submit" value="Regresar"></button>
+ </form>
 </div>
 
 

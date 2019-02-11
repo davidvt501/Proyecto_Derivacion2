@@ -68,7 +68,7 @@ function buscarSelect()
   <h2>Modificar Estudiantes:</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-          Test
+          XD
     </div>
   </div>
 </div>

@@ -68,30 +68,30 @@ function buscarSelect()
 </div>
 
 <div class="container">
-  <h2>Modificar Criterios:</h2>
+  <h2>Modificar Indicadores:</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <b> Lista de Criterios</b>
+      <b> Lista de Indicadores</b>
       <br>
-      <i> Criterios Academicos: </i>
+      <i> Indicadores Academicos: </i>
       <?php while($mostrar=pg_fetch_assoc($conCritAcad)){
         echo '<li>'.$mostrar['criteria_definition'].' - Codigo: '.$mostrar['cod'].'';
       } ?>
       <br>
       <br>
-      <i> Criterios Socio-Emocionales </i>
+      <i> Indicadores Socioemocionales </i>
       <?php while($mostrar2=pg_fetch_assoc($conCritSocEm)){
         echo '<li>'.$mostrar2['criteria_definition'].' - Codigo: '.$mostrar2['cod'].'';
       } ?>
       <br>
       <br>
-      <b> Agregar Criterio</b>
+      <b> Agregar Indicador</b>
         <form name="carrera_a" action="add_criteria.php" method="POST">
         	Descripcion:
           <br>
-          <textarea id="confirmationText" class="text" cols="70" rows ="5" name="criteria_definition" required placeholder="Describa aqui el criterio"></textarea> <br>
+          <textarea id="confirmationText" class="text" cols="70" rows ="5" name="criteria_definition" required placeholder="Describa aqui el indicador"></textarea> <br>
           <br>
-          Tipo de Criterio:
+          Tipo de Indicador:
           <select id="soflow-color2" name="type" required>
             <option value="" selected>Seleccione un Tipo:</option>
             <option value="s">Socio Emocional</option>
@@ -101,17 +101,17 @@ function buscarSelect()
         	<input type="submit" value="Agregar">
         </form>
         <br>
-        <b>Eliminar Criterios:</b>
+        <b>Eliminar Indicadores:</b>
         <br>
-        Buscar criterio por Codigo:
+        Buscar Indicador por Codigo:
         <form onsubmit="return false">
           <input type="text" id="buscar"><input type="submit" value="Buscar" onclick="buscarSelect()">
         </form>
           <p>
-            Buscar criterio manualmente:
+            Buscar Indicador manualmente:
             <form method="post" action="delete_criteria.php">
             <select id="soflow-color" name="cod" required>
-              <option value="" selected>Seleccione el Criterio:</option>
+              <option value="" selected>Seleccione el Indicador:</option>
                       <?php
                   while ($mostrar3=pg_fetch_assoc($conCrit)){
                     echo '<option name="run" value="'.$mostrar3['cod'].'">'.$mostrar3['criteria_definition'].'</option>';

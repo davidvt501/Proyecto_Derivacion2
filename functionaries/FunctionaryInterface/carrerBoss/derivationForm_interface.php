@@ -64,6 +64,7 @@ function buscarSelect()
 	}
 }
 </script>
+
  </head>
  <body>
 
@@ -97,16 +98,21 @@ function buscarSelect()
       }
   ?>
       </select><br>
-      Criterios academicos:<br>
+
+      <b>Indicadores academicos: </b><br>
+      <div align="left">
       <?php while($mostrarCriteriaAcad=pg_fetch_assoc($criteriaAcad)){
         echo '<input type="checkbox" name="academica[]" value="'.$mostrarCriteriaAcad['criteria_definition'].'">'.$mostrarCriteriaAcad['criteria_definition'].' <br>';
       }
   ?>
-      Criterios socio-emocionales: <br>
+</div>
+<div align="left">
+      <b>Indicadores socio-emocionales: </b><br>
       <?php while($mostrarCriteriaSocEm=pg_fetch_assoc($criteriaSocEm)){
         echo '<input type="checkbox" name="academica[]" value="'.$mostrarCriteriaSocEm['criteria_definition'].'">'.$mostrarCriteriaSocEm['criteria_definition'].' <br>';
       }
       ?>
+    </div>
       Correo: <input type="text" name="mail" value="" required> <br>
       Telefono: <input type="text" name="phone" value="" required> <br>
     Comentario <br>

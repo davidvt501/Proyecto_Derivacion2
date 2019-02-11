@@ -43,7 +43,7 @@ $nomProg=pg_fetch_assoc($datProg);
   <h1>Resumen Derivacion</h1>
 <p>Jefe / Funcionario que deriva: <?php echo $nombreFun['name']; ?> </p>
 <p>Estudiante derivado: <?php echo $nombreEs['name'];?></p>
-<p> Criterios considerados: </p>
+<p> Indicadores considerados: </p>
 <ul>
 <?php for($i=0; $i < count($criteriosArray); $i++){
     echo " <li>$criteriosArray[$i]</li>";

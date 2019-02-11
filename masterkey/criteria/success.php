@@ -13,7 +13,7 @@ $_SESSION["campus"]=$campus;
 <head>
 </head>
 <body>
-  Criterio agregado de forma exitosa
+  Indicador agregado de forma exitosa
   <form action="mainInterface.php">
 <button type="submit">Regresar</button>
   </form>

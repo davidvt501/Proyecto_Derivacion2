@@ -13,7 +13,7 @@ $_SESSION["campus"]=$campus;
 <head>
 </head>
 <body>
-  Criterio Eliminado de forma Exitosa
+  Indicador Eliminado de forma Exitosa
   <form action="mainInterface.php">
 <button type="submit">Regresar</button>
   </form>

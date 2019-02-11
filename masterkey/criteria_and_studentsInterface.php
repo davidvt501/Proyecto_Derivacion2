@@ -49,7 +49,7 @@ font-size: 5px;
 	<form method="post">
 	</form>
 	<div>
-	<p>Modificar Criterios</p>
+	<p>Modificar Indicadores</p>
 	<form name="empty" action="criteria/mainInterface.php">
 	<img src="../assets/images/criteria.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">

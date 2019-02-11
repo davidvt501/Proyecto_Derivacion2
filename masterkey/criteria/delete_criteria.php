@@ -9,11 +9,10 @@ session_start();
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
 
-$criteria=$_POST["criteria_definition"];
-$type=$_POST["type"];
+$cod=$_POST['cod'];
 
-$pg=pg_query($db,"INSERT INTO criteria (criteria_definition,type) VALUES ('$criteria','$type')");
+$pg=pg_query($db,"DELETE FROM criteria WHERE cod='$cod'");
 
 
-header ('Location: success.php');
+header ('Location: success_deleting.php');
  ?>

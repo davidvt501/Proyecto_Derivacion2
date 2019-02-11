@@ -50,7 +50,7 @@ font-size: 5px;
 	</form>
 	<div>
 	<p>Modificar Criterios</p>
-	<form name="empty" action="#">
+	<form name="empty" action="criteria/mainInterface.php">
 	<img src="../assets/images/criteria.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 </form>
@@ -61,8 +61,8 @@ font-size: 5px;
 	<form method="post">
 	</form>
 	<div>
-	<p>Modificar Alumnos</p>
-	<form name="empty" action="#">
+	<p>Modificar Estudiantes</p>
+	<form name="empty" action="students/mainInterface.php">
 	<img src="../assets/images/students.png" alt="carrera" height="190" width="190">
 	<br> <input type="submit" value="Acceder">
 	</form>

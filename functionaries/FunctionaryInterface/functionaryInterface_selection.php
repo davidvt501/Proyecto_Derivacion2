@@ -98,32 +98,12 @@ font-size: 5px;
 		<form method="post">
 		</form>
 		<div>
-		<form name="hola" action="password/change_password.php" method="post">
 		<br>
 		<img src="../../assets/images/key.png" alt="carrera" height="190" width="190">
-		<p>Cambiar contraseña</p>
 		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<input type="submit">
+		Cambiar Contraseña
+		<form name="hola" action="password/change_password.php" method="post">
+		<button type="submit">Ingresar</button>
 		</form>
 		</div>
 	</div>

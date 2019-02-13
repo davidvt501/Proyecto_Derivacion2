@@ -6,9 +6,18 @@ $credentials = "user = postgres password=1234";
 $db = pg_connect( "$host $port $dbname $credentials"  );
 session_start();
 $run=$_SESSION["run"];
-$_SESSION["run_f"]=$run;
+$_SESSION['run']=$run;
+$pass=$_POST['pass'];
+$new_pass=$_POST['new_pass'];
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
+
+$consulta_pass=pg_query($db,"SELECT * FROM functionary WHERE run='$run' and pass='$pass'");
+
+$pass_db=pg_fetch_assoc($consulta_pass);
+
+
+
 ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -64,23 +73,27 @@ function buscarSelect()
 	 <div class="header">
 
  <a href="http://www.ucn.cl/" class="image fit"><img src="../../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
-<form action="../functionaryInterface_selection.php" method="post">
- <input type="image" src="../../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt="">
- <input type="hidden" name="cod" value="<?php echo $cod ?>">
-</form>
 </div>
 
 <div class="container">
-  <h2>Cambiar Contraseña:</h2>
+  <h2></h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <form action="password_verification_alt.php" method="post">
-      Ingrese su contraseña actual <br>
-      <input type="text" name="pass"> <br>
-      Ingrese su nueva contraseña <br>
-      <input type="text" name="new_pass"> <br>
-      <input type="submit" value="Enviar">
-      </form>
+			<?php
+			if($pass==$pass_db['pass']){
+				$cambio_pass=pg_query($db,"UPDATE functionary SET pass='$new_pass' WHERE run='$run'");
+				echo 'Contraseña Cambiada exitosamente';
+				echo '<br>';
+				echo '<form>';
+				echo '<button formaction="../functionaryInterface_selection.php">Regresar</button>';
+				echo '</form>';
+			}else{
+				echo 'Contraseña erronea, intentelo nuevamente.';
+				echo '<br>';
+				echo '<form>';
+				echo '<button formaction="../functionaryInterface_selection.php">Regresar</button>';
+				echo '</form>';
+			} ?>
     </div>
   </div>
 </div>

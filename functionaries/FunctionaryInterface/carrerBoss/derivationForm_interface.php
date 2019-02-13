@@ -82,12 +82,12 @@ function buscarSelect()
   <h2>Realizar Derivacion:</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <p>Introduzca el RUT del Funcionario</p>
+      <p>Introduzca el RUT del Estudiante</p>
 <form onsubmit="return false">
   <input type="text" id="buscar"><input type="submit" value="Buscar" onclick="buscarSelect()">
 </form>
     <form name="derivation" action="derivationProcess/analize_derivation.php" method="POST">
-      Estudiante <br>
+      Busque estudiante manualmente: <br>
       <select id="soflow-color" name="run" required>
         <option value="">Seleccione un estudiante</option>
         <?php
@@ -106,8 +106,9 @@ function buscarSelect()
       }
   ?>
 </div>
+<b>Indicadores socio-emocionales: </b><br>
 <div align="left">
-      <b>Indicadores socio-emocionales: </b><br>
+
       <?php while($mostrarCriteriaSocEm=pg_fetch_assoc($criteriaSocEm)){
         echo '<input type="checkbox" name="academica[]" value="'.$mostrarCriteriaSocEm['criteria_definition'].'">'.$mostrarCriteriaSocEm['criteria_definition'].' <br>';
       }

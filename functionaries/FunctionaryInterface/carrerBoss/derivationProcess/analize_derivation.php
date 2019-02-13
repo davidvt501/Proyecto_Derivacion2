@@ -80,7 +80,7 @@ if ($cons['cod_program']==301){ //Verifica si es PACE
     header('Location: recap_derivation.php');
   }
 }else{
-header('Location: noCriteria.html');
+header('Location: noCriteria.php');
 }
 
 ?>

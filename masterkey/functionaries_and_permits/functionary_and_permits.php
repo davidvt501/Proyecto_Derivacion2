@@ -91,7 +91,7 @@ function buscarSelect()
       <select id="xd" name="permits_c" required>
       						              <option value="" selected>Seleccione una carrera</option>
       						              <?php
-      													$sql2="SELECT * FROM carrer WHERE active!=false ORDER BY name";
+      													$sql2="SELECT * FROM carrer WHERE active!=false AND campus='$campus' ORDER BY name";
       													$result2=pg_query($db,$sql2);
       						          while ($mostrar=pg_fetch_assoc($result2)){
       						            echo '<option name="cod_carrer" value="'.$mostrar['cod_carrer'].'">'.$mostrar['name'].'</option>';
@@ -106,7 +106,7 @@ function buscarSelect()
                               <select id="xd" name="permits_c" required>
                               						              <option value="" selected>Seleccione un programa</option>
                               						              <?php
-                              													$sql3="SELECT * from program WHERE active!=false AND type='a' ORDER BY name";
+                              													$sql3="SELECT * from program WHERE active!=false AND type='a' AND campus='$campus' ORDER BY name";
                               													$result3=pg_query($db,$sql3);
                               													while ($mostrar=pg_fetch_assoc($result3)){
                               														echo '<option name="cod_program" value="'.$mostrar['cod_program'].'">'.$mostrar['name'].'</option>';

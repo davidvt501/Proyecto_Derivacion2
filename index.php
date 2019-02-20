@@ -193,9 +193,9 @@ $_SESSION["campus"]=$campus;
 	<div class="inputGroup inputGroup3">
 		<button class="send" id="login">Ingresar</button>
     <br>
-    <button class="back" formaction="main.html">Regresar</button>
 	</div>
 </form>
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
 
 

@@ -7,16 +7,16 @@ session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
+$run=$_SESSION["run"];
+
 ?>
-
-
 <!DOCTYPE html>
  <html lang="en">
  <head>
  <meta charset="utf-8">
  <title>select</title>
- <link rel="stylesheet" type="text/css" href="../../../assets/css/funcionarios.css">
- <link rel="stylesheet" type="text/css" href="../../../assets/css/boxes.css">
+ <link rel="stylesheet" type="text/css" href="../../assets/css/funcionarios.css">
+ <link rel="stylesheet" type="text/css" href="../../assets/css/boxes.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -59,24 +59,24 @@ function buscarSelect()
  <body>
 
 
-   <div class="header">
+	 <div class="header">
 
- <a href="http://www.ucn.cl/" class="image fit"><img src="../../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
- <form action="addFunctionaryInterface.php" method="post">
-  <input type="image" src="../../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt="">
+ <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
+<form action="functionary_and_permits.php" method="post">
+  <input type="image" src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt="">
   <input type="hidden" name="run" value="<?php echo $run?>">
- </form>
- </div>
+</form>
+</div>
 
- <div class="container">
-  <h2>Funcionario Ingresado</h2>
+<div class="container">
+  <h2>Permiso Asignado</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <p>El funcionario ha sido ingresado de forma correcta</p>
+      <p>Se han asignado permisos de manera correcta</p>
     </div>
   </div>
- </div>
+</div>
 
 
  </body>
-</html>
+ </html>

@@ -5,11 +5,10 @@ $dbname      = "dbname = db_derv";
 $credentials = "user = postgres password=1234";
 session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
-$campus=$_SESSION["campus"];
-$_SESSION["campus"]=$campus;
-$run=$_SESSION["run"];
 
 ?>
+
+
 <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -59,24 +58,24 @@ function buscarSelect()
  <body>
 
 
-	 <div class="header">
+   <div class="header">
 
  <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
-<form action="functionary_and_permits.php" method="post">
+ <form action="functionary_and_permits.php" method="post">
   <input type="image" src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt="">
   <input type="hidden" name="run" value="<?php echo $run?>">
-</form>
-</div>
+ </form>
+ </div>
 
-<div class="container">
-  <h2>Exito</h2>
+ <div class="container">
+  <h2>Sample</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <p>Se han asignado permisos de manera correcta</p>
+      <p>Sample.</p>
     </div>
   </div>
-</div>
+ </div>
 
 
  </body>
- </html>
+</html>

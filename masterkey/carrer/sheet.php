@@ -1,8 +1,11 @@
 <?php
+$host        = "host = localhost";
+$port        = "port = 5432";
+$dbname      = "dbname = db_derv";
+$credentials = "user = postgres password=1234";
 session_start();
+$db = pg_connect( "$host $port $dbname $credentials"  );
 
-$campus=$_SESSION["campus"];
-$_SESSION["campus"]=$campus;
 ?>
 
 
@@ -58,16 +61,16 @@ function buscarSelect()
    <div class="header">
 
  <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
- <form action="mainInterface.php" method="post">
+ <form action="functionary_and_permits.php" method="post">
   <input type="image" src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt="">
  </form>
  </div>
 
  <div class="container">
-  <h2>Carrera Creada</h2>
+  <h2>Sample</h2>
   <div class="panel panel-default">
     <div class="panel-body">
-      <p>Carrera creada de forma correcta</p>
+      <p>Sample.</p>
     </div>
   </div>
  </div>

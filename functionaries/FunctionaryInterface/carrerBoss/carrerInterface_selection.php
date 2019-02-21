@@ -67,7 +67,7 @@ font-size: 5px;
 		<form method="post">
 		</form>
 		<div>
-		<form name="hola" action="programFunctionary/progInterface_selection.php" method="post">
+		<form name="hola" action="prev_derv.php" method="post">
 		<img src="../../../assets/images/derivations.png" alt="carrera" height="190" width="190">
     <p> Revisar Derivaciones Previas </p>
 		<input type="submit" value="Acceder">

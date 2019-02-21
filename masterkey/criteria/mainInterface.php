@@ -74,15 +74,19 @@ function buscarSelect()
       <b> Lista de Indicadores</b>
       <br>
       <i> Indicadores Academicos: </i>
+      <div align="left">
       <?php while($mostrar=pg_fetch_assoc($conCritAcad)){
         echo '<li>'.$mostrar['criteria_definition'].' - Codigo: '.$mostrar['cod'].'';
       } ?>
+    </div>
       <br>
-      <br>
+      <br>ss
       <i> Indicadores Socioemocionales </i>
+      <div align="left">
       <?php while($mostrar2=pg_fetch_assoc($conCritSocEm)){
         echo '<li>'.$mostrar2['criteria_definition'].' - Codigo: '.$mostrar2['cod'].'';
       } ?>
+    </div>
       <br>
       <br>
       <b> Agregar Indicador</b>

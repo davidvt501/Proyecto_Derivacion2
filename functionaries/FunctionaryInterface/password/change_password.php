@@ -76,9 +76,9 @@ function buscarSelect()
     <div class="panel-body">
       <form action="password_verification_alt.php" method="post">
       Ingrese su contraseña actual <br>
-      <input type="text" name="pass"> <br>
+      <input type="password" name="pass"> <br>
       Ingrese su nueva contraseña <br>
-      <input type="text" name="new_pass"> <br>
+      <input type="password" name="new_pass"> <br>
       <input type="submit" value="Enviar">
       </form>
     </div>

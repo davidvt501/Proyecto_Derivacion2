@@ -114,11 +114,9 @@ function buscarSelect()
       }
       ?>
     </div>
-      Correo: <input type="text" name="mail" value="" required> <br>
-      Telefono: <input type="text" name="phone" value="" required> <br>
     Comentario <br>
-    <textarea id="confirmationText" class="text" cols="70" rows ="5" name="comment" required placeholder="Comentarios y Observaciones con respecto al estudiante al que se desea derivar."></textarea> <br>
-    <input type="submit">
+    <textarea id="confirmationText" class="text" cols="140" rows ="5" name="comment" required placeholder="Comentarios y Observaciones con respecto al estudiante al que se desea derivar."></textarea> <br>
+    <input type="submit" value="Enviar">
     </form>
     </div>
   </div>

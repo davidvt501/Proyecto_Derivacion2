@@ -130,7 +130,7 @@ $exe=pg_query($db,$consultaderivaciones);
   </div>
 
   <div class="container">
-    <h2>Realizar Derivacion:</h2>
+    <h2>Derivaciones Programadas:</h2>
     <div class="panel panel-default">
       <div class="panel-body">
 

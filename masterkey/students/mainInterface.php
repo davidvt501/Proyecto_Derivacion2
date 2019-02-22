@@ -1,4 +1,4 @@
-<?php
+  <?php
 $host        = "host = localhost";
 $port        = "port = 5432";
 $dbname      = "dbname = db_derv";
@@ -7,6 +7,9 @@ session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
+
+$sCarrer=pg_query($db,"SELECT * FROM carrer WHERE campus='$campus'");
+$Carrer=pg_fetch_assoc($sCarrer);
 ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -24,6 +27,7 @@ br {
 display: block;
 margin: 2px 0;
 }
+ </style>
  </style>
  <style>
 body {
@@ -64,15 +68,20 @@ function buscarSelect()
  <a href="../criteria_and_studentsInterface.php" class="image fit"><img src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt=""></a>
 </div>
 
-<div class="container">
-  <h2>Modificar Estudiantes:</h2>
-  <div class="panel panel-default">
-    <div class="panel-body">
-          XD
-    </div>
-  </div>
-</div>
-
+    <?php while($Carrer=pg_fetch_assoc($sCarrer)){
+      $cod=$Carrer['cod_carrer'];
+      echo '<div class="car card-3">';
+        echo $Carrer['name'];
+        echo '<br>';
+        echo '<form action="#" method="post">';
+        echo '<img src="../../assets/images/'.$cod.'.png" alt="alt" height="90" width="90">';
+        echo '<input type="hidden" value="'.$cod.'">';
+        echo '<br>';
+        echo '<button type="submit">Ingresar</button>';
+        echo '<form>';
+      echo '</div>';
+      }
+      ?>
 
  </body>
  </html>

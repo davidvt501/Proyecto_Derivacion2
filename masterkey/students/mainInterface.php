@@ -71,10 +71,10 @@ function buscarSelect()
     <?php while($Carrer=pg_fetch_assoc($sCarrer)){
       $cod=$Carrer['cod_carrer'];
       echo '<div class="car card-3">';
-        echo $Carrer['name'];
+        echo ucfirst(strtolower($Carrer['name']));
         echo '<br>';
         echo '<form action="#" method="post">';
-        echo '<img src="../../assets/images/'.$cod.'.png" alt="alt" height="90" width="90">';
+        echo '<img src="../../assets/images/'.$cod.'.png" alt="alt" height="80" width="80">';
         echo '<input type="hidden" value="'.$cod.'">';
         echo '<br>';
         echo '<button type="submit">Ingresar</button>';

@@ -126,7 +126,6 @@ table.blueTable tfoot .links a{
    <input type="hidden" value="<?php echo $cod_program ?>" name="cod">
   </form>
   </div>
-
   <div class="container">
     <h2>Derivaciones Pendientes:</h2>
     <div class="panel panel-default">
@@ -206,30 +205,10 @@ table.blueTable tfoot .links a{
 
         echo'</div>';
         echo '</div>';
-        } ?>
+        }
+        ?>
           </tbody>
         </table>
-        <script>
-
-        document.querySelector('button').addEventListener('click',function clickHandler(e){
-
-        this.removeEventListener('click',clickHandler,false);
-
-        e.preventDefault();
-        var self = this;
-        setTimeout(function(){
-            self.className = 'loading';
-        },125);
-
-        setTimeout(function(){
-            self.className = 'ready';
-        },4300);
-
-        },false);
-
-        </script>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script  src="../assets/js/index.js"></script>
         </div>
       </div>
     </div>

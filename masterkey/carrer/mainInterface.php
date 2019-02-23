@@ -7,8 +7,9 @@ session_start();
 $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
-$sql="SELECT * FROM carrer WHERE active!=false AND campus='$campus' ORDER BY name";
-$result=pg_query($db,$sql);
+
+$result=pg_query($db,"SELECT * FROM carrer WHERE campus='$campus'");
+
 ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -71,6 +72,7 @@ function buscarSelect()
     <div class="panel-body">
       <b> Agregar Carrera </b>
       <p> Ingrese un nombre y codigo para la carrera </p>
+      <div align="center">
         <form name="carrera_a" action="add_carrer.php" method="POST">
         	Nombre de la Carrera
           <input type="text" name="name" maxlength="100" required>
@@ -80,6 +82,7 @@ function buscarSelect()
           <br>
         	<input type="submit" value="Agregar">
         </form>
+      </div>
         <br>
       <b>Eliminar Carrera</b>
       <p>Buscar Carrera por codigo:</p>

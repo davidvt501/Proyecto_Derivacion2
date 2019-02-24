@@ -76,7 +76,7 @@ function buscarSelect()
       echo '<div class="car card-3">';
         echo ucwords(strtolower($Carrer['name']));
         echo '<br>';
-        echo '<form action="students_list.php" method="post">';
+        echo '<form action="students_search.php" method="post">';
         echo '<button type="submit" name="cod" value="'.$Carrer['cod_carrer'].'""><img src="../../assets/images/'.$cod.'.png" alt="Alt" height="100" width="100"></button>';
         echo '<br>';
       //  echo '<input type="hidden" name="cod[]" value="'.$Carrer['cod_carrer'].'">';

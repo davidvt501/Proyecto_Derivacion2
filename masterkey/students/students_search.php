@@ -99,6 +99,26 @@ function buscarSelect()
                   <br>
                   <button type="submit">Enviar</button>
                 </form>
+              </p>
+              <p>
+                <?php
+                $senStudents="SELECT carrer_student.run as run,carrer.cod_carrer as cod_carrer,
+                student.name as student_name,student.academic_level,
+                student.income_year,student.campus,
+                program.cod_program,program.name as program_name,
+                carrer.name as carrer_name
+                FROM carrer_student INNER JOIN student
+                ON student.run=carrer_student.run
+                INNER JOIN carrer ON carrer_student.cod_carrer=carrer.cod_carrer
+                INNER JOIN program_student ON program_student.run=student.run
+                INNER JOIN program ON program.cod_program=program_student.cod_program
+                WHERE carrer.cod_carrer='$cod'";
+                $conStudents=pg_query($db,$senStudents);
+                while ($Students=pg_fetch_assoc($conStudents)){
+                  echo ''.$Students['student_name'].' - Programa:'.$Students['program_name'].'';
+                }
+                  ?>
+              </p>
     </div>
   </div>
 </div>

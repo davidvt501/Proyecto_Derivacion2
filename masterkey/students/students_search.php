@@ -9,6 +9,7 @@ $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
 
 $cod=$_POST['cod'];
+$_SESSION["cod"]=$cod;
 
 $carrer_pg=pg_query($db,"SELECT * from carrer WHERE cod_carrer='$cod'");
 $carrerData=pg_fetch_assoc($carrer_pg);
@@ -80,14 +81,16 @@ function buscarSelect()
     <div class="panel-body">
       <?php echo '<img src="../../assets/images/'.$cod.'.png" alt="Alt" height="140" width="140">';?>
       <br>
-      <br>
+      <b> Modificar estado de alumnos </b>
+      <p> Buscar alumno por RUN: </p>
       <form onsubmit="return false">
         <input type="text" id="buscar"><input type="submit" value="Buscar" onclick="buscarSelect()">
       </form>
       <br>
         <p>
-          <form method="post" action="#">
+          <form method="post" action="student_summary.php">
             <br>
+            <p> Buscar alumno manualmente: </p>
           <select id="soflow-color" name="run" required>
             <option value="" selected>Seleccione al Estudiante:</option>
                     <?php
@@ -100,6 +103,7 @@ function buscarSelect()
                   <button type="submit">Enviar</button>
                 </form>
               </p>
+              <b> Lista de Alumnos pertenecientes a algun programa </b>
               <p>
                 <?php
                 $senStudents="SELECT carrer_student.run as run,carrer.cod_carrer as cod_carrer,
@@ -115,7 +119,7 @@ function buscarSelect()
                 WHERE carrer.cod_carrer='$cod'";
                 $conStudents=pg_query($db,$senStudents);
                 while ($Students=pg_fetch_assoc($conStudents)){
-                  echo ''.$Students['student_name'].' - Programa:'.$Students['program_name'].'';
+                  echo ''.$Students['student_name'].' - Programa:'.$Students['program_name'].' - Run:'.$Students['run'].'';
                 }
                   ?>
               </p>

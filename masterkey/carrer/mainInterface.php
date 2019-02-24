@@ -8,7 +8,7 @@ $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
 
-$result=pg_query($db,"SELECT * FROM carrer WHERE campus='$campus'");
+$result=pg_query($db,"SELECT * FROM carrer WHERE campus='$campus' AND cod_carrer!='000' AND cod_carrer!='001'");
 
 ?>
 <!DOCTYPE html>

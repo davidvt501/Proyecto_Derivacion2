@@ -1,4 +1,4 @@
-  <?php
+<?php
 $host        = "host = localhost";
 $port        = "port = 5432";
 $dbname      = "dbname = db_derv";
@@ -8,8 +8,27 @@ $db = pg_connect( "$host $port $dbname $credentials"  );
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
 
-$sCarrer=pg_query($db,"SELECT * FROM carrer WHERE campus='$campus' AND active=true ORDER BY name");
-$Carrer=pg_fetch_assoc($sCarrer);
+$cod=$_SESSION["cod"];
+$_SESSION["cod"]=$cod;
+
+$run=$_POST['run'];
+$senStudentP="SELECT carrer_student.run as run,carrer.cod_carrer as cod_carrer,
+student.name as student_name,student.academic_level,
+student.income_year,student.campus,
+program.cod_program,program.name as program_name,
+carrer.name as carrer_name
+FROM carrer_student INNER JOIN student
+ON student.run=carrer_student.run
+INNER JOIN carrer ON carrer_student.cod_carrer=carrer.cod_carrer
+INNER JOIN program_student ON program_student.run=student.run
+INNER JOIN program ON program.cod_program=program_student.cod_program
+WHERE student.run='$run'";
+$conStudentP=pg_query($db,$senStudentP);
+$StudentP=pg_fetch_assoc($conStudentP);
+
+$conStudent=pg_query($db,"SELECT * FROM student WHERE run='$run'");
+$Student=pg_fetch_assoc($conStudent);
+
 ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -17,7 +36,6 @@ $Carrer=pg_fetch_assoc($sCarrer);
  <meta charset="utf-8">
  <title>select</title>
  <link rel="stylesheet" type="text/css" href="../../assets/css/funcionarios.css">
- <link rel="stylesheet" type="text/css" href="../../assets/css/funcionarios2.css">
  <link rel="stylesheet" type="text/css" href="../../assets/css/boxes.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,13 +47,10 @@ margin: 2px 0;
 }
  </style>
  <style>
- button{
-   padding: 0;
-border: none;
-background: none;
- }
- </style>
- <style>
+body {
+margin: 0;
+}
+
 .header {
 text-align: center;
 background: #1abc9c;
@@ -67,24 +82,17 @@ function buscarSelect()
 	 <div class="header">
 
  <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
- <a href="../criteria_and_studentsInterface.php" class="image fit"><img src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt=""></a>
+ <a href="students_search.php" class="image fit"><img src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt=""></a>
 </div>
-    <?php
-    while($Carrer=pg_fetch_assoc($sCarrer)){
-      $cod=$Carrer['cod_carrer'];
-      echo '<div class="car card-3">';
-        echo ucwords(strtolower($Carrer['name']));
-        echo '<br>';
-        echo '<form action="students_search.php" method="post">';
-        echo '<button type="submit" name="cod" value="'.$Carrer['cod_carrer'].'""><img src="../../assets/images/'.$cod.'.png" alt="Alt" height="100" width="100"></button>';
-        echo '<br>';
-      //  echo '<input type="hidden" name="cod[]" value="'.$Carrer['cod_carrer'].'">';
-        echo '<br>';
-      //  echo '<button type="submit">Ingresar</button>';
-        echo '<form>';
-      echo '</div>';
-      }
-      ?>
+
+<div class="container">
+  <h2><?php echo $Student['name']?></h2>
+  <div class="panel panel-default">
+    <div class="panel-body">
+    </div>
+  </div>
+</div>
+
 
  </body>
  </html>

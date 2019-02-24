@@ -36,10 +36,6 @@ background: none;
  }
  </style>
  <style>
-body {
-margin: 0;
-}
-
 .header {
 text-align: center;
 background: #1abc9c;

@@ -1,10 +1,10 @@
 body {
   background-image: url("https://www.ucn.cl/wp-content/themes/ucn-central/img/sede-antofagasta-carreras-570.jpg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: repeat;
   text-align: center;
-  min-height: 100%; /* or min-height */
-  padding:0;
-  margin:0;
+  height: 1750px;
+  width: 100%;
 }
 
 .card {
@@ -53,13 +53,13 @@ body {
   background: #fff;
   border-radius: 2px;
   display: inline-block;
-  height: 180px;
+  height: 150px;
   margin: 0.4rem;
   position: relative;
-  width: 180px;
+  width: 150px;
   top: 100px;
   opacity: 0.75;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .xd{

@@ -12,6 +12,7 @@ $cod=$_SESSION["cod"];
 $_SESSION["cod"]=$cod;
 
 $run=$_POST['run'];
+$_SESSION["run"]=$run;
 $senStudentP="SELECT carrer_student.run as run,carrer.cod_carrer as cod_carrer,
 student.name as student_name,student.academic_level,
 student.income_year,student.campus,
@@ -24,10 +25,25 @@ INNER JOIN program_student ON program_student.run=student.run
 INNER JOIN program ON program.cod_program=program_student.cod_program
 WHERE student.run='$run'";
 $conStudentP=pg_query($db,$senStudentP);
-$StudentP=pg_fetch_assoc($conStudentP);
+
+$senStudentP2="SELECT carrer_student.run as run,carrer.cod_carrer as cod_carrer,
+student.name as student_name,student.academic_level,
+student.income_year,student.campus,
+program.cod_program,program.name as program_name,
+carrer.name as carrer_name
+FROM carrer_student INNER JOIN student
+ON student.run=carrer_student.run
+INNER JOIN carrer ON carrer_student.cod_carrer=carrer.cod_carrer
+INNER JOIN program_student ON program_student.run=student.run
+INNER JOIN program ON program.cod_program=program_student.cod_program
+WHERE student.run='$run'";
+$conStudentP2=pg_query($db,$senStudentP2);
+
 
 $conStudent=pg_query($db,"SELECT * FROM student WHERE run='$run'");
 $Student=pg_fetch_assoc($conStudent);
+
+$conProgram=pg_query($db,"SELECT * from program WHERE campus='$campus' AND type='e' ORDER BY name");
 
 ?>
 <!DOCTYPE html>
@@ -82,15 +98,65 @@ function buscarSelect()
 	 <div class="header">
 
  <a href="http://www.ucn.cl/" class="image fit"><img src="../../images/ucnlogo.png" align="right" style="width:100px; height:100px"; alt=""></a>
- <a href="students_search.php" class="image fit"><img src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt=""></a>
+<form action="students_search.php" method="post">
+ <input type="image" src="../../assets/images/back-arrow.png" align="left" style="width:90px; height:90px"; alt="">
+ <input type="hidden" value="<?php echo $cod?>" name="cod">
+</form>
 </div>
 
 <div class="container">
   <h2><?php echo $Student['name']?></h2>
   <div class="panel panel-default">
     <div class="panel-body">
+      <div>
+          <p>Año de Ingreso: <?php echo $Student['income_year']?></p>
+          <p>Correo: <?php echo $Student['mail']?></p>
+          <p>Nivel Academico: <?php echo $Student['academic_level']?></p>
+          <b>Programas a los que pertenece</B>
+          <?php while($StudentP=pg_fetch_assoc($conStudentP)){
+            echo '<div align="center">';
+            echo '<li>';
+            echo $StudentP['program_name'];
+            echo '</li>';
+            echo '</div>';
+          } ?>
+    </div>
+    <br>
+    <div>
+      <p> Agregar alumno a programa: </p>
+      <form action="action_process.php" method="post">
+      <select id="soflow-color" name="cod_program" required>
+        <option value="" selected>Seleccione un programa</otpion>
+          <?php
+            while ($program=pg_fetch_assoc($conProgram)){
+              echo '<option value="'.$program['cod_program'].'">'.$program['name'].'</option>';
+            }
+
+          ?>
+          <input type="hidden" value="a" name="action">
+      </select>
+      <br>
+      <button type="submit">Enviar</button>
+    </form>
+    </div>
+    <br>
+    <div>
+      <p> Remover alumno de programa: </P>
+        <form action="action_process.php" method="post">
+          <select id="soflow-color" name="cod_program" required>
+            <option value="" selected>Seleccione algun programa</P>
+            <?php while($StudentP2=pg_fetch_assoc($conStudentP2)){
+              echo '<option value="'.$StudentP2['cod_program'].'">'.$StudentP2['program_name'].'</option>';
+            }
+            ?>
+            <input type="hidden" value="r" name="action">
+          </select>
+          <br>
+          <button type="submit">Enviar</button>
+        </form>
     </div>
   </div>
+</div>
 </div>
 
 

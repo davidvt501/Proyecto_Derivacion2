@@ -12,23 +12,23 @@ $cod=$_SESSION["cod"];
 $_SESSION["cod"]=$cod;
 
 $run=$_SESSION["run"];
+$_SESSION["run"]=$run;
 
+$cod_program=$_SESSION["cod_program"];
 
-$action = $_POST['action'];
-$cod_program=$_POST['cod_program'];
-$_SESSION['cod_program']=$cod_program;
-
-$student_name=$_SESSION['student_name'];
+$student_name=$_SESSION["student_name"];
 
 $program=pg_query($db,"SELECT * FROM program where cod_program='$cod_program'");
 echo $program['name'];
 
-if($action=='a'){
-  $sentence="INSERT INTO program_student VALUES ('$run','$cod_program')";
-  $addProgram=pg_query($db,$sentence);
-  header ('Location: success.php');
-}else if($action=='r'){
-
-}
-
 ?>
+<html>
+<head>
+</head>
+<body>
+  <?PHP echo $run;
+  echo $cod_program;
+  echo $program['name'];
+  ?>
+</Body>
+</html>

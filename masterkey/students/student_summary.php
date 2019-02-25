@@ -106,6 +106,7 @@ function buscarSelect()
 
 <div class="container">
   <h2><?php echo $Student['name']?></h2>
+  <?php $_SESSION['student_name']=$Student['name'];?>
   <div class="panel panel-default">
     <div class="panel-body">
       <div>
@@ -124,7 +125,7 @@ function buscarSelect()
     <br>
     <div>
       <p> Agregar alumno a programa: </p>
-      <form action="action_process.php" method="post">
+      <form action="action_process.php" method="get">
       <select id="soflow-color" name="cod_program" required>
         <option value="" selected>Seleccione un programa</otpion>
           <?php
@@ -143,13 +144,13 @@ function buscarSelect()
     <div>
       <p> Remover alumno de programa: </P>
         <form action="action_process.php" method="post">
-          <select id="soflow-color" name="cod_program" required>
+          <select name="cod_program" id="soflow-color" required>
             <option value="" selected>Seleccione algun programa</P>
             <?php while($StudentP2=pg_fetch_assoc($conStudentP2)){
-              echo '<option value="'.$StudentP2['cod_program'].'">'.$StudentP2['program_name'].'</option>';
+              echo '<option name="cod_program"value="'.$StudentP2['cod_program'].'">'.$StudentP2['program_name'].'</option>';
             }
             ?>
-            <input type="hidden" value="r" name="action">
+            <input type="hidden" name="action" value="r">
           </select>
           <br>
           <button type="submit">Enviar</button>

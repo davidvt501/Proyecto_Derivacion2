@@ -1,9 +1,5 @@
 <?php
-$host        = "host = localhost";
-$port        = "port = 5432";
-$dbname      = "dbname = db_derv";
-$credentials = "user = postgres password=1234";
-$db = pg_connect( "$host $port $dbname $credentials"  );
+include '../../../includes/db_connect.php';
 session_start();
 $cod_program=$_SESSION["cod"];
 $consultaderivaciones="SELECT derivation.*,carrer_student.cod_carrer as cod_carrer, program.name as program_name,student.name as student_name,functionary.name as functionary_name

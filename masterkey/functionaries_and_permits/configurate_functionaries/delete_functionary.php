@@ -1,11 +1,7 @@
 
 <?php
-$host        = "host = localhost";
-$port        = "port = 5432";
-$dbname      = "dbname = db_derv";
-$credentials = "user = postgres password=1234";
+include '../../../includes/db_connect.php';
 session_start();
-$db = pg_connect( "$host $port $dbname $credentials"  );
 
 $run=$_POST['run'];
 $eliminar="DELETE FROM permits_f where run='$run'";

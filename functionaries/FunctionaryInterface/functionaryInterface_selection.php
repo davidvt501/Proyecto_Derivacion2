@@ -1,14 +1,11 @@
 <?php
-$host        = "host = localhost";
-$port        = "port = 5432";
-$dbname      = "dbname = db_derv";
-$credentials = "user = postgres password=1234";
+include '../../includes/db_connect.php';
 session_start();
 $run=$_SESSION["run_f"];
 $_SESSION["run"]=$run;
 $campus=$_SESSION["campus"];
 $_SESSION["campus"]=$campus;
-$db = pg_connect( "$host $port $dbname $credentials"  );
+
 
 
 $sql_carrer="SELECT * FROM permits_f where run='$run' AND permisson_state!=false AND permisson_type='c'";

@@ -1,8 +1,5 @@
 <?php
-$host        = "host = localhost";
-$port        = "port = 5432";
-$dbname      = "dbname = db_derv";
-$credentials = "user = postgres password=1234";
+include '../../../includes/db_connect.php';
 session_start();
 $cod=$_POST["cod"];
 $run_f=$_SESSION["run_f"];
@@ -11,7 +8,6 @@ $_SESSION["campus"]=$campus;
 
 $_SESSION["run_f"]=$run_f;
 $_SESSION["cod"]=$cod;
-$db = pg_connect( "$host $port $dbname $credentials"  );
 ?>
 <!DOCTYPE html>
  <html lang="en">

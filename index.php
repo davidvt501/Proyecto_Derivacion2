@@ -70,7 +70,7 @@ $_SESSION["campus"]=$campus;
 
 <body>
 
-  <form action="functionaries/functionary_distinction.php" method="post">
+  <form action="http://localhost/Proyecto_Derivacion2/functionaries/functionary_distinction.php" method="post">
 	<div class="svgContainer">
 		<div>
 			<svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
